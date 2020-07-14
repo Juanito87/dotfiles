@@ -1,0 +1,30 @@
+##==============================================================================
+##  Alias
+##==============================================================================
+
+# Improving readability options with:
+# - Color coding
+# - Human readable
+# - Nicer sorting/behavior
+# - Avoid preexisting alias prefixing \ to de command, just in case
+# - Piping to less for long commands, can navigate with vim keys
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias tree='\tree --dirsfirst -C'
+alias dmesg='\dmesg --color=auto --reltime --human --nopager --decode'
+alias free='\free -mht'
+alias sudo='\sudo '
+alias du='\du -h'
+alias df='\df -h'
+
+# Setting alias for enhanced commands
+alias ls='better_ls'
+alias history='better_history'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Setting alias for git, to manage dotfile in $HOME
+alias gitdot='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
