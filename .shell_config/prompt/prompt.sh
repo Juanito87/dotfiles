@@ -24,6 +24,7 @@ synth_shell_prompt()
 ##  Inspired by twolfson's sexy-bash-prompt:
 ##  https://github.com/twolfson/sexy-bash-prompt
 ##
+localhostname= $HOSTNAME
 getGitBranch()
 {
     # changed which
@@ -164,17 +165,17 @@ prompt_command_hook()
     ## LOAD USER CONFIGURATION
     local user_config_file="$HOME/.shell_config/prompt/user.config"
     local root_config_file="$HOME/.shell_config/prompt/root.config"
-    local sys_config_file="$HOME/.shell_config/prompt/sys.config"
+    local remote_config_file="$HOME/.shell_config/prompt/remote.config"
 
     if [ -f "$root_config_file" ] && [ "$USER" == "root"  ]; then
         # shellcheck disable=SC1090
         source "$root_config_file"
-    elif   [ -f "$user_config_file" ]; then
+    elif   [ -f "$user_config_file" ] && [ "$HOSTNAME" == "$localhostname" ]; then
         # shellcheck disable=SC1090
         source "$user_config_file"
-    elif [ -f "$sys_config_file" ]; then
+    elif [ -f "$remote_config_file" ]; then
         # shellcheck disable=SC1090
-        source "$sys_config_file"
+        source "$remote_config_file"
     fi
     ## PADDING
     # shellcheck disable=2154
