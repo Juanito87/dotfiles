@@ -47,14 +47,16 @@ getGitBranch()
             ## there are more lines, then we know it is dirty.
             ## NOTE: this requires that tyou fetch your repository,
             ##       otherwise your information is outdated.
+            ## If git status is not piped to /dev/null, getting to .git directories
+            ## shows errors on screen. Can be removed for debugging.
             local is_dirty=false &&\
-                       [[ -n "$(git status --porcelain)" ]] &&\
+                       [[ -n "$(git status --porcelain 2> /dev/null)" ]] &&\
                        is_dirty=true
             local is_ahead=false &&\
-                       [[ "$(git status --porcelain -u no -b)" == *"ahead"* ]] &&\
+                       [[ "$(git status --porcelain -u no -b 2> /dev/null)" == *"ahead"* ]] &&\
                        is_ahead=true
             local is_behind=false &&\
-                        [[ "$(git status --porcelain -u no -b)" == *"behind"* ]] &&\
+                        [[ "$(git status --porcelain -u no -b 2> /dev/null)" == *"behind"* ]] &&\
                         is_behind=true
 
 
