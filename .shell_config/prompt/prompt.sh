@@ -24,7 +24,7 @@ synth_shell_prompt()
 ##  Inspired by twolfson's sexy-bash-prompt:
 ##  https://github.com/twolfson/sexy-bash-prompt
 ##
-localhostname= $HOSTNAME
+localhostname=$HOSTNAME
 getGitBranch()
 {
     # changed which
@@ -101,7 +101,6 @@ printSegment()
     local next_background_color=$4
     local font_effect=$5
 
-
     ## COMPUTE COLOR FORMAT CODES
     local no_color
     local text_format
@@ -110,17 +109,11 @@ printSegment()
     text_format="\[$(getFormatCode -c "$font_color" -b "$background_color" -e "$font_effect")\]"
     separator_format="\[$(getFormatCode -c "$background_color" -b "$next_background_color")\]"
 
-
     ## GENERATE TEXT
     # shellcheck disable=SC2059
     # shellcheck disable=SC2154
     printf "${text_format}${segment_padding}${text}${segment_padding}${separator_padding_left}${separator_format}${separator_char}${separator_padding_right}${no_color}"
 }
-
-
-
-
-
 
 ##------------------------------------------------------------------------------
 ##
@@ -133,8 +126,6 @@ prompt_command_hook()
     local git_branch
     path="$(shortenPath "$PWD" 20)"
     git_branch="$(shortenPath "$(getGitBranch)" 10)"
-
-
 
     ## UPDATE BASH PROMPT ELEMENTS
     # shellcheck disable=SC2034
@@ -151,7 +142,6 @@ prompt_command_hook()
     fi
 
     ## CHOOSE PS1 FORMAT IF INSIDE GIT REPO
-    # changed gor ! -z
     if [ -n "$(getGitBranch)" ] && $SSP_GIT_SHOW; then
         PS1=$SSP_PS1_GIT
     else
