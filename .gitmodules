@@ -1,18 +1,15 @@
-[submodule ".vim/pack/fugitive"]
-	path = .vim/pack/fugitive
-	url = https://tpope.io/vim/fugitive.git
 [submodule ".vim/pack/tpope/start/fugitive"]
-	path = .vim/pack/tpope/start/fugitive
-	url = https://tpope.io/vim/fugitive.git
+    path = .vim/pack/tpope/start/fugitive
+    url = https://tpope.io/vim/fugitive.git
 [submodule ".vim/pack/tpope/start/commentary"]
-	path = .vim/pack/tpope/start/commentary
-	url = https://tpope.io/vim/commentary.git
+    path = .vim/pack/tpope/start/commentary
+    url = https://tpope.io/vim/commentary.git
 [submodule ".vim/pack/tpope/start/surround"]
-	path = .vim/pack/tpope/start/surround
-	url = https://tpope.io/vim/surround.git
+    path = .vim/pack/tpope/start/surround
+    url = https://tpope.io/vim/surround.git
 [submodule ".vim/pack/vim-syntastic/start/syntastic"]
-	path = .vim/pack/vim-syntastic/start/syntastic
-	url = https://github.com/vim-syntastic/syntastic.git
+    path = .vim/pack/vim-syntastic/start/syntastic
+    url = https://github.com/vim-syntastic/syntastic.git
 [submodule ".vim/pack/gruvbox/start/gruvbox"]
-	path = .vim/pack/gruvbox/start/gruvbox
-	url = https://github.com/morhetz/gruvbox.git
+    path = .vim/pack/gruvbox/start/gruvbox
+    url = https://github.com/morhetz/gruvbox.git
