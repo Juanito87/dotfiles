@@ -14,9 +14,9 @@ alias egrep='egrep --color=auto'
 alias tree='\tree --dirsfirst -C'
 alias dmesg='\dmesg --color=auto --reltime --human --nopager --decode'
 alias free='\free -mht'
-alias sudo='\sudo '
 alias du='\du -h'
 alias df='\df -h'
+alias sudo='\sudo '
 
 # Setting alias for enhanced commands
 alias ls='better_ls'

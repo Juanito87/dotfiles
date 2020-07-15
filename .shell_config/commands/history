@@ -1,3 +1,4 @@
+#!/bin/bash
 betterHistory()
 {
     # Local are color codes, can be changed, for more info

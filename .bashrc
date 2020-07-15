@@ -29,6 +29,8 @@ if [[ $DISPLAY ]]; then
     [[ $- != *i* ]] && return
     [[ -z "$TMUX" ]] && exec tmux
 fi
+
+#Enabling bash completion
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
       # shellcheck disable=SC1091

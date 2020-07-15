@@ -25,6 +25,7 @@ synth_shell_prompt()
 ##  https://github.com/twolfson/sexy-bash-prompt
 ##
 localhostname=$HOSTNAME
+
 getGitBranch()
 {
     # changed which
