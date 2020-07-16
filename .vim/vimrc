@@ -28,6 +28,7 @@ set smarttab                                                                   "
 set backspace=indent,eol,start                                                 " Allows backspace to delete normally in insert mode
 set smartindent                                                                " Allows auto indent
 au FileType * set formatoptions-=c formatoptions-=r formatoptions-=o           " Disables automatic commenting with text width, on newline, or inserting with o. This config needs to execute after all filetype plugin instances
+au BufReadPost * if &modifiable | retab | endif                                " Retab when opening the document, if the file is modifiable
 
 " Display options
 set showmode                                                                   " Show the current mode in use in the last line

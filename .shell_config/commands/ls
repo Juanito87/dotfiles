@@ -1,5 +1,3 @@
-#!/bin/bash
-
 ##  +-----------------------------------+-----------------------------------+
 ##  |                                                                       |
 ##  | Copyright (c) 2018-2020, Andres Gongora <mail@andresgongora.com>.     |
@@ -18,8 +16,6 @@
 ##  | along with this program. If not, see <http://www.gnu.org/licenses/>.  |
 ##  |                                                                       |
 ##  +-----------------------------------------------------------------------+
-
-
 
 ##
 ##  DESCRIPTION:
