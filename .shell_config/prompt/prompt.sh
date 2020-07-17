@@ -192,21 +192,21 @@ prompt_command_hook()
     local ps1_pwd_git
     local ps1_git_git
     # shellcheck disable=2154
-    ps1_user_git=$(printSegment "${prompt_horizontal_padding}\${SSP_USER}" "$font_color_user" "$background_user" "$background_host" "$texteffect_user")
+    ps1_user_git=$(printSegment " ${prompt_horizontal_padding}\${SSP_USER} " "$font_color_user" "$background_user" "$background_host" "$texteffect_user")
     # shellcheck disable=2154
-    ps1_host_git=$(printSegment "${prompt_horizontal_padding}\${SSP_HOST}" "$font_color_host" "$background_host" "$background_pwd" "$texteffect_host")
+    ps1_host_git=$(printSegment " ${prompt_horizontal_padding}\${SSP_HOST} " "$font_color_host" "$background_host" "$background_pwd" "$texteffect_host")
     # shellcheck disable=2154
-    ps1_pwd_git=$(printSegment "${prompt_horizontal_padding}\${SSP_PWD}" "$font_color_pwd" "$background_pwd" "$background_git" "$texteffect_pwd")
+    ps1_pwd_git=$(printSegment " ${prompt_horizontal_padding}\${SSP_PWD} " "$font_color_pwd" "$background_pwd" "$background_git" "$texteffect_pwd")
     # shellcheck disable=2154
-    ps1_git_git=$(printSegment "${prompt_horizontal_padding}\${SSP_GIT}" "$font_color_git" "$background_git" "$background_input" "$texteffect_git")
+    ps1_git_git=$(printSegment " ${prompt_horizontal_padding}\${SSP_GIT} " "$font_color_git" "$background_git" "$background_input" "$texteffect_git")
 
     local ps1_user
     local ps1_host
     local ps1_pwd
     local ps1_git
-    ps1_user=$(printSegment "${prompt_horizontal_padding}\${SSP_USER}" "$font_color_user" "$background_user" "$background_host" "$texteffect_user")
-    ps1_host=$(printSegment "\${SSP_HOST}" "$font_color_host" "$background_host" "$background_pwd" "$texteffect_host")
-    ps1_pwd=$(printSegment "\${SSP_PWD}" "$font_color_pwd" "$background_pwd" "$background_input" "$texteffect_pwd")
+    ps1_user=$(printSegment " ${prompt_horizontal_padding}\${SSP_USER} " "$font_color_user" "$background_user" "$background_host" "$texteffect_user")
+    ps1_host=$(printSegment " ${prompt_horizontal_padding}\${SSP_HOST} " "$font_color_host" "$background_host" "$background_pwd" "$texteffect_host")
+    ps1_pwd=$(printSegment  " ${prompt_horizontal_padding}\${SSP_PWD} " "$font_color_pwd" "$background_pwd" "$background_input" "$texteffect_pwd")
     ps1_git=""
 
     ## MAKE GIT OPTIONS GLOBALLY AVAILABLE
