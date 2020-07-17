@@ -50,7 +50,7 @@ export FZF_DEFAULT_OPTS='--height 96% --reverse --preview "cat {}"'
 
 # Calling config files
 # shellcheck disable=1090
-for f in .shell_config/*;
+for f in $HOME/.shell_config/*;
 do
     if [ -d "$f" ]
         then
