@@ -1,6 +1,7 @@
 #!/bin/bash
-# set vi mode for bash
+# set vi mode for bash and vim as the default editor
 set -o vi
+export EDITOR='vim'
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
