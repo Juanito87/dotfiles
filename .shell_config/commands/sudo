@@ -1,6 +1,10 @@
+#!/bin/bash
 # Enabling autocomplete for the command
 # -c will indicate the commando to autocomplete
 # -f will indicate to not complete with filenames
+function Jsudo()
+{
 if [ "$PS1" ]; then
     complete -cf sudo
 fi
+}

@@ -1,0 +1,18 @@
+#!/bin/bash
+# barely added something, from https://askubuntu.com/questions/962489/is-there-any-way-to-create-backup-copy-of-a-file-without-type-its-name-twice
+function bak()
+{
+# Check that there is only one parameter
+    if [ $# -eq 1 ]
+    then
+       # Make timestamp to avoid overwriting or promtpting
+       time=$(date +%d-%m-%y_%H:%M)
+       # Copy and preserve permitions
+       # shellcheck disable=2225
+       cp -p "$1"{,."$time".bak}
+    else
+       echo "Info:  $1 copies to a backup file"
+       echo "Usage: $1 <file to be backed up with .bak extension>"
+    fi
+
+}
