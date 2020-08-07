@@ -7,6 +7,7 @@ set formatoptions=qln                                                          "
 let mapleader =" "                                                             " Setting leader to space bar
 set splitbelow splitright                                                      " Splits open at the bottom and right
 set viminfo+=n~/.vim/viminfo
+set mouse+=a                                                                   " Set mouse to avoid copying relative numbers when interacting with vim
 
 " Undo files
 " Checking and setting needed directories and permission
@@ -49,6 +50,14 @@ set t_Co=256                                                                   "
 let g:airline_powerline_fonts = 1                                              " Set powerline symbols
 colorscheme gruvbox                                                            " Set colorscheme to gruvbox plugin
 set background=dark                                                            " Set dark mode
+let g:airline#extensions#tmuxline#enabled = 0                                  " Set vim theme in tmux status line
+let g:airline#extensions#branch#enabled = 1                                   " Setting airline to show branches
+let g:airline#extensions#fugitiveline#enabled = 1                             " Enable buffer line integration with fugitive
+let g:airline#extensions#fzf#enabled = 1                                      " Enable fzf integration
+let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'                  " Configure title for quickfix buffers
+let g:airline#extensions#quickfix#location_text = 'Location'                  " Configure title for location buffers
+let g:airline#extensions#syntastic#enabled = 1                                " Configure syntastic integration
+let g:airline_detect_spell=1                                                  " Detect spelling in airline
 
 " Search and autocomplete config
 set path+=**                                                                   " Search subfolders, allow autocomplete
@@ -60,6 +69,13 @@ set smartcase                                                                  "
 set incsearch                                                                  " Incremental search to highlight partial matches
 set hlsearch                                                                   " Highlight partial search
 set rtp+=~/.fzf                                                                " Setting fzf in runtime
+" let g:airline_theme_patch_func = 'AirlineThemePatch'
+function! s:update_highlights()                                                " Setting highlight to match theme
+    hi CursorLine ctermbg=none guibg=none
+    hi VertSplit ctermbg=none guibg=none
+endfunction
+autocmd User AirlineAfterTheme call s:update_highlights()
+
 
 " Spell check, adding usability to autocomplete
 setlocal spell spelllang=en,es                                                 " Setting dictionaries languages

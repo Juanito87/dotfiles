@@ -35,3 +35,4 @@ __git_complete gitdot __git_main
 
 #Reload rc files
 alias rrc='source ~/.bashrc'
+alias trc='tmux source-file ~/.tmux.conf'
