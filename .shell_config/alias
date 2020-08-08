@@ -28,10 +28,14 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # Setting alias for git, to manage dotfile in $HOME with autocomplete
 alias gitdot='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias gitdotsm='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME submodule'
+alias gitdotsma='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME submodule add'
+alias gitdotsmu='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME submodule update --remote --merge'
 if [ -f "/usr/share/bash-completion/completions/git" ]; then
   . /usr/share/bash-completion/completions/git
 fi
 __git_complete gitdot __git_main
+__git_complete gitdotsm __git_submodule
 
 #Reload rc files
 alias rrc='source ~/.bashrc'

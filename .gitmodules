@@ -1,12 +1,12 @@
 [submodule ".vim/pack/tpope/start/fugitive"]
     path = .vim/pack/tpope/start/fugitive
-	url = https://github.com/tpope/vim-fugitive.git
+    url = https://github.com/tpope/vim-fugitive.git
 [submodule ".vim/pack/tpope/start/commentary"]
     path = .vim/pack/tpope/start/commentary
-	url = https://github.com/tpope/vim-commentary.git
+    url = https://github.com/tpope/vim-commentary.git
 [submodule ".vim/pack/tpope/start/surround"]
     path = .vim/pack/tpope/start/surround
-	url = https://github.com/tpope/vim-surround.git
+    url = https://github.com/tpope/vim-surround.git
 [submodule ".vim/pack/vim-syntastic/start/syntastic"]
     path = .vim/pack/vim-syntastic/start/syntastic
     url = https://github.com/vim-syntastic/syntastic.git
@@ -14,5 +14,20 @@
     path = .vim/pack/gruvbox/start/gruvbox
     url = https://github.com/morhetz/gruvbox.git
 [submodule ".vim/pack/dist/start/vim-airline"]
-	path = .vim/pack/dist/start/vim-airline
-	url = https://github.com/vim-airline/vim-airline.git
+    path = .vim/pack/dist/start/vim-airline
+    url = https://github.com/vim-airline/vim-airline.git
+[submodule ".vim/pack/tmux/start/tmuxline.vim"]
+    path = .vim/pack/tmux/start/tmuxline.vim
+    url = https://github.com/edkolev/tmuxline.vim.git
+[submodule ".vim/pack/tmux/start/vim-tmux"]
+    path = .vim/pack/tmux/start/vim-tmux
+    url = https://github.com/tmux-plugins/vim-tmux.git
+[submodule ".tmux/plugins/tmux-net-speed"]
+	path = .tmux/plugins/tmux-net-speed
+	url = https://github.com/tmux-plugins/tmux-net-speed.git
+[submodule ".tmux/plugins/tmux-cpu"]
+	path = .tmux/plugins/tmux-cpu
+	url = https://github.com/tmux-plugins/tmux-cpu.git
+[submodule ".tmux/plugins/tpm"]
+	path = .tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
