@@ -51,13 +51,13 @@ let g:airline_powerline_fonts = 1                                              "
 colorscheme gruvbox                                                            " Set colorscheme to gruvbox plugin
 set background=dark                                                            " Set dark mode
 let g:airline#extensions#tmuxline#enabled = 0                                  " Set vim theme in tmux status line
-let g:airline#extensions#branch#enabled = 1                                   " Setting airline to show branches
-let g:airline#extensions#fugitiveline#enabled = 1                             " Enable buffer line integration with fugitive
-let g:airline#extensions#fzf#enabled = 1                                      " Enable fzf integration
-let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'                  " Configure title for quickfix buffers
-let g:airline#extensions#quickfix#location_text = 'Location'                  " Configure title for location buffers
-let g:airline#extensions#syntastic#enabled = 1                                " Configure syntastic integration
-let g:airline_detect_spell=1                                                  " Detect spelling in airline
+let g:airline#extensions#branch#enabled = 1                                    " Setting airline to show branches
+let g:airline#extensions#fugitiveline#enabled = 1                              " Enable buffer line integration with fugitive
+let g:airline#extensions#fzf#enabled = 1                                       " Enable fzf integration
+let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'                   " Configure title for quickfix buffers
+let g:airline#extensions#quickfix#location_text = 'Location'                   " Configure title for location buffers
+let g:airline#extensions#syntastic#enabled = 1                                 " Configure syntastic integration
+let g:airline_detect_spell=1                                                   " Detect spelling in airline
 
 " Search and autocomplete config
 set path+=**                                                                   " Search subfolders, allow autocomplete
@@ -75,7 +75,6 @@ function! s:update_highlights()                                                "
     hi VertSplit ctermbg=none guibg=none
 endfunction
 autocmd User AirlineAfterTheme call s:update_highlights()
-
 
 " Spell check, adding usability to autocomplete
 setlocal spell spelllang=en,es                                                 " Setting dictionaries languages
@@ -150,7 +149,6 @@ function! NetrwMapping()
                 \ *.jar$,
                 \ *.war$,
                 \ *__pycache__*'
-
 endfunction
 
 augroup netrw_mapping
@@ -172,7 +170,6 @@ map <leader>c :lclose<CR>
 map <leader>o :lopen <bar>
 
 " syntastic options
-let g:airline#extensions#syntastic#enabled = 1                  " Set statusline in airline
 let g:syntastic_always_populate_loc_list = 1                    " Always put detected error in the loclist
 let g:syntastic_auto_jump = 1                                   " Jumps directly to first error on open
 let g:syntastic_auto_loc_list = 1                               " Opens error windows if errors are detected
