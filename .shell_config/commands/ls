@@ -65,13 +65,13 @@ function better_ls()
     if [ $# -eq 0 ]; then
 
         ## IF THE CURRENT FOLDER IS NOT EMPTY -> Display all
-        files=$($LS -U * 2> /dev/null | wc -l)
+        files=$($LS -Ua . 2> /dev/null | wc -l)
         if [ "$files" != "0" ]
         then
             ## LIST DIR AND PARENT
             ## - Convert dir name
             ## - Check that not at /, because there is no parent
-            $LS -d {.,..,*} -lA --color=auto --human-readable \
+            $LS -d {.,..} -lA --color=auto --human-readable \
                 --time-style=long-iso --group-directories-first;
 
 
