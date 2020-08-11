@@ -45,7 +45,7 @@ set foldnestmax=10                                                             "
 set nofoldenable                                                               " At open everything is normal, not folded
 set foldlevel=2                                                                " Needs testing.
 
-" " Airline config
+" Airline config
 set t_Co=256                                                                   " Set terminal color options
 let g:airline_powerline_fonts = 1                                              " Set powerline symbols
 colorscheme gruvbox                                                            " Set colorscheme to gruvbox plugin
@@ -121,8 +121,6 @@ function! ToggleVimExplorer()
     else
         exec '1wincmd w'
         Vexplore
-        " After switching to netwr buff, lets resize to 45
-        "vertical resize 45
         let t:expl_buf_num = bufnr("%")
     endif
 endfunction
@@ -156,12 +154,35 @@ augroup netrw_mapping
     autocmd filetype netrw call NetrwMapping()
 augroup END
 
-" Adding mappings
-"" Adding remap for moving between windows more naturally
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" Mappings
+"" Adding remap for to manage splits. Moving, closing, etc.
+map <silent> <C-h> WinMoveLeft
+map <silent> <C-j> WinMoveDown
+map <silent> <C-k> WinMoveUp
+map <silent> <C-l> WinMoveRight
+
+" Move to the window in the direction shown, or create a new window
+function s:WinMove(key)
+    let t:curwin = winnr()
+    exec "wincmd ".a:key
+    if (t:curwin == winnr())
+        if (match(a:key,'<esc>'))
+            v
+        else
+            s
+        endif
+        exec "wincmd ".a:key
+    endif
+endfunction
+" Call to function definiton
+" Navigate to pane to the left, or create a new pane
+nnoremap WinMoveLeft :<C-U>call <SID>WinMove('h')<CR>
+" Navigate to pane to below, or create a new pane
+nnoremap WinMoveDown :<C-U>call <SID>WinMove('j')<CR>
+" Navigate to pane above, or create a new pane
+nnoremap WinMoveUp :<C-U>call <SID>WinMove('k')<CR>
+" Navigate to pane to the right, or create a new pane
+nnoremap WinMoveRight :<C-U>call <SID>WinMove('l')<CR>
 
 "" This mappings are for syntastic, to allow quick jump to errors, closing and opening loclist
 map <leader>n :lnext<CR>

@@ -16,17 +16,12 @@
 ##  | along with this program. If not, see <http://www.gnu.org/licenses/>.  |
 ##  |                                                                       |
 ##  +-----------------------------------------------------------------------+
-
-##
 ##  DESCRIPTION:
 ##  Overrides 'ls' command to be more useful/easier to read. The following
 ##  main modifications are applied:
 ##  - Colorized
 ##  - Human readable output
 ##  - Long timestamp
-##
-##
-##
 ##
 ##  HOW IF WORKS:
 ##  - If no arguments passed
@@ -37,9 +32,6 @@
 ##      Shows hidden files
 ##  - else
 ##      Runs with argument, but sorts directories first and prints color
-##
-##
-##
 ##
 ##  DEV NOTES:
 ##
@@ -59,10 +51,6 @@
 ##      Anything starting with '.', followed by one char that can not be
 ##      '.', and then as many (or any) characters as wanted.
 ##
-
-
-
-
 ##==============================================================================
 ##  BETTER LS
 ##==============================================================================
@@ -71,7 +59,6 @@ function better_ls()
 {
     shopt -s extglob
     local LS="$(which ls)"
-
 
     ## IF NO ARGUMENTS PASSED -> run better ls version on current folder
     ## OR IF ARGUMENT IS A PATH -> run better ls version on specified folder
@@ -104,8 +91,6 @@ function better_ls()
                 --time-style=long-iso --group-directories-first;
         fi
 
-
-
     ## IF ARGUMENT IS A SINGLE PATH
     ## Move to target dir
     ## Call recursively with no arguments
@@ -116,13 +101,9 @@ function better_ls()
         better_ls
         'cd' "$current_pwd"
 
-
-
     ## IF ARGUMENT IS A SINGLE FILE
     elif [ $# -eq 1 -a -f "$1" ]; then
         $LS -l --color=auto --human-readable --time-style=long-iso "$1"
-
-
 
     ## IF ARGUMENTS PASSED -> run standard ls but with some tweaks (eg: colors)
     else
