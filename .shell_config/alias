@@ -26,16 +26,18 @@ alias history='better_history'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Setting alias for git, to manage dotfile in $HOME with autocomplete
+# Setting alias for git, to manage dotfiles in $HOME with autocomplete
+## git use __git_main for autocompletei, git subcommands are _git_subcomand
 alias gitdot='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias gitdotsm='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME submodule'
 alias gitdotsma='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME submodule add'
 alias gitdotsmu='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME submodule update --remote --merge'
-if [ -f "/usr/share/bash-completion/completions/git" ]; then
-  . /usr/share/bash-completion/completions/git
-fi
+alias sshdot='/usr/bin/git --git-dir=$HOME/.sshcfg/ --work-tree=$HOME/.ssh'
+__git_complete sshdot __git_main
 __git_complete gitdot __git_main
-__git_complete gitdotsm __git_submodule
+__git_complete gitdotsm _git_submodule
+__git_complete gitdotsma _git_submodule
+__git_complete gitdotsmu _git_submodule
 
 #Reload rc files
 alias rrc='source ~/.bashrc'
