@@ -27,7 +27,7 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # Setting tmux to launch always on gui only
 if [[ $DISPLAY ]]; then
     # If not running interactively, do not do anything
-    [[ $- != *i* ]] && return
+    # [[ $- != *i* ]] && return
     [[ -z "$TMUX" ]] && exec tmux
 fi
 
