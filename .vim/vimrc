@@ -166,9 +166,9 @@ function s:WinMove(key)
     exec "wincmd ".a:key
     if (t:curwin == winnr())
         if (match(a:key,'<esc>'))
-            v
+            wincmd v
         else
-            s
+            wincmd s
         endif
         exec "wincmd ".a:key
     endif
