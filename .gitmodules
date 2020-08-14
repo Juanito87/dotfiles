@@ -24,7 +24,7 @@
     url = https://github.com/tmux-plugins/vim-tmux.git
 [submodule ".tmux/plugins/tmux-net-speed"]
     path = .tmux/plugins/tmux-net-speed
-    url = https://github.com/Juanito87/tmux-net-speed.git
+	url = https://github.com/Juanito87/tmux-net-speed.git
 [submodule ".tmux/plugins/tmux-cpu"]
     path = .tmux/plugins/tmux-cpu
     url = https://github.com/tmux-plugins/tmux-cpu.git
