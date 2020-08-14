@@ -31,6 +31,10 @@ if [[ $DISPLAY ]]; then
     [[ -z "$TMUX" ]] && exec tmux
 fi
 
+# SSH for tmux test
+function ssh (){
+        /usr/bin/ssh -t "$@" "tmux attach -t $(whoami) || tmux new-session -s $(whoami)";
+    }
 #Enabling bash completion
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
