@@ -2,7 +2,7 @@
     email = juancruz.f87@gmail.com
     name = juanito87
 [core]
-	excludesfile = /home/ubuntu/.gitignore-global
+    excludesfile = ~/.gitignore-global
 [difftool]
     prompt = false
 [alias]

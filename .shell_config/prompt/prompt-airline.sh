@@ -4,7 +4,7 @@
 function __promptline_host {
   local only_if_ssh="0"
 
-  if [ $only_if_ssh -eq 0 -o -n "${SSH_CLIENT}" ]; then
+  if [ $only_if_ssh -eq 0 ] || [ -n "${SSH_CLIENT}" ]; then
     if [[ -n ${ZSH_VERSION-} ]]; then print %m; elif [[ -n ${FISH_VERSION-} ]]; then hostname -s; else printf "%s" \\h; fi
   fi
 }
@@ -77,6 +77,7 @@ function __promptline_cwd {
   local cwd="${PWD/#$HOME/$tilde}"
 
   # get first char of the path, i.e. tilde or slash
+  # shellcheck disable=1087 disable=2125 disable=2102
   [[ -n ${ZSH_VERSION-} ]] && first_char=$cwd[1,1] || first_char=${cwd::1}
 
   # remove leading tilde
@@ -177,16 +178,19 @@ function __promptline {
   local y_bg="${wrap}48;5;239${end_wrap}"
   local y_sep_fg="${wrap}38;5;239${end_wrap}"
   if [[ -n ${ZSH_VERSION-} ]]; then
+    # shellcheck disable=2034
     PROMPT="$(__promptline_left_prompt)"
+    # shellcheck disable=2034
     RPROMPT="$(__promptline_right_prompt)"
   elif [[ -n ${FISH_VERSION-} ]]; then
     if [[ -n "$1" ]]; then
+      # shellcheck disable=2015
       [[ "$1" = "left" ]] && __promptline_left_prompt || __promptline_right_prompt
     else
       __promptline_ps1
     fi
   else
-    PS1="$(__promptline_ps1)"
+    PS1="$(__promptline_ps1)\n"
   fi
 }
 
