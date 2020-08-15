@@ -7,6 +7,7 @@ set formatoptions=qln                                                          "
 let mapleader =" "                                                             " Setting leader to space bar
 set splitbelow splitright                                                      " Splits open at the bottom and right
 set viminfo+=n~/.vim/viminfo
+set mouse=a                                                                    " Enable mouse use in all modes (n, v, i, c and h) fixes copy pasting with the mouse.
 
 " Undo files
 " Checking and setting needed directories and permission

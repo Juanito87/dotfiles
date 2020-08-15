@@ -42,6 +42,11 @@ __git_complete gitdotsm _git_submodule
 __git_complete gitdotsma _git_submodule
 __git_complete gitdotsmu _git_submodule
 
+# Tmux alias
+alias tls='tmux ls'
+alias tks='tmux kill-session -t'
+alias tkw='tmux kill-windows -t'
+
 #Reload rc files
 alias rrc='source ~/.bashrc'
 alias trc='tmux source-file ~/.tmux.conf'
