@@ -13,9 +13,16 @@ set mouse=a                                                                    "
 set clipboard=unnamedplus                                                      " Vim buffer to system clipboard (requieres vim compiled with +clipboard)
 noremap x "_x                                                                  " Prevent x from overriding what's in the clipboard.
 noremap X "_x                                                                  " Prevent x from overriding what's in the clipboard.
+"" Integration for wsl and clipboard
+if system('uname -r') =~ "Microsoft"
+    augroup Yank
+        autocmd!
+        autocmd TextYankPost * :call system('clip.exe ',@")
+    augroup END
+endif
 
 " Undo files
-" Checking and setting needed directories and permission
+"" Checking and setting needed directories and permission
 if !isdirectory($HOME."/.vim")
     call mkdir($HOME."/.vim", "", 0770)
 endif
@@ -74,7 +81,6 @@ set smartcase                                                                  "
 set incsearch                                                                  " Incremental search to highlight partial matches
 set hlsearch                                                                   " Highlight partial search
 set rtp+=~/.fzf                                                                " Setting fzf in runtime
-" let g:airline_theme_patch_func = 'AirlineThemePatch'
 function! s:update_highlights()                                                " Setting highlight to match theme
     hi CursorLine ctermbg=none guibg=none
     hi VertSplit ctermbg=none guibg=none
@@ -109,8 +115,7 @@ au BufWritePre * %s/\s\+$//e
 au BufWritepre * %s/\n\+\%$//e
 
 " Netrw config
-let g:netrw_winsize = 25        " Window size
-
+"" Toggle function to work more like nerdtree
 function! ToggleVimExplorer()
     if exists("t:expl_buf_num")
         let expl_win_num = bufwinnr(t:expl_buf_num)
@@ -129,17 +134,16 @@ function! ToggleVimExplorer()
         let t:expl_buf_num = bufnr("%")
     endif
 endfunction
-
+"" Remap for toggle
 nmap <leader>e :call ToggleVimExplorer()<cr>
-
+"" Set netrw for all calls to netrw
 function! NetrwMapping()
-
     let g:netrw_banner = 0                " Remove the banner at the top
     let g:netrw_liststyle = 3             " Default directory view. Cycle with i
     let g:netrw_browse_split = 0          " New files are opened in a new vertical
     let g:netrw_altv = 1                  " Files are opened to the right of netrw
+    let g:netrw_winsize = 25              " Window size
     let g:netrw_sort_sequence = '[\/]$,*' " Default config
-
     let g:netrw_list_hide= '.*.swp$,
                 \ *.pyc$,
                 \ *.log$,
@@ -153,19 +157,18 @@ function! NetrwMapping()
                 \ *.war$,
                 \ *__pycache__*'
 endfunction
-
 augroup netrw_mapping
     autocmd!
     autocmd filetype netrw call NetrwMapping()
 augroup END
 
 " Mappings
-"" Adding remap for to manage splits. Moving, closing, etc.
+"" Adding remap for to manage splits. Moving, closing, opening splits.
 map <silent> <C-h> WinMoveLeft
 map <silent> <C-j> WinMoveDown
 map <silent> <C-k> WinMoveUp
 map <silent> <C-l> WinMoveRight
-
+nnoremap <C-C> <C-W><C-C>
 " Move to the window in the direction shown, or create a new window
 function s:WinMove(key)
     let t:curwin = winnr()
@@ -189,12 +192,6 @@ nnoremap WinMoveUp :<C-U>call <SID>WinMove('k')<CR>
 " Navigate to pane to the right, or create a new pane
 nnoremap WinMoveRight :<C-U>call <SID>WinMove('l')<CR>
 
-"" This mappings are for syntastic, to allow quick jump to errors, closing and opening loclist
-map <leader>n :lnext<CR>
-map <leader>p :lprevious<CR>
-map <leader>c :lclose<CR>
-map <leader>o :lopen <bar>
-
 " syntastic options
 let g:syntastic_always_populate_loc_list = 1                    " Always put detected error in the loclist
 let g:syntastic_auto_jump = 1                                   " Jumps directly to first error on open
@@ -212,3 +209,8 @@ let g:syntastic_html_checkers = ["w3"]                          " Setting html l
 let g:syntastic_filetype_map = {"Dockerfile": "dockerfile"}     " Map dockerfiles with lower case as dockerfiles
 au FileType qf wincmd L                                         " Seting quickfix/loclist to the right side of the screen
 au FileType qf vertical resize 80                               " Resize quickfix/loclist to 80 lines
+"" Mappings for allowing quick jump to errors, closing and opening loclist
+map <leader>n :lnext<CR>
+map <leader>p :lprevious<CR>
+map <leader>c :lclose<CR>
+map <leader>o :lopen <bar>
