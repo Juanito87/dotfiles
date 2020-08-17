@@ -10,9 +10,9 @@
 [submodule ".vim/pack/vim-syntastic/start/syntastic"]
     path = .vim/pack/vim-syntastic/start/syntastic
     url = https://github.com/vim-syntastic/syntastic.git
-[submodule ".vim/pack/gruvbox/start/gruvbox"]
-    path = .vim/pack/gruvbox/start/gruvbox
-    url = https://github.com/morhetz/gruvbox.git
+; [submodule ".vim/pack/gruvbox/start/gruvbox"]
+;     path = .vim/pack/gruvbox/start/gruvbox
+;     url = https://github.com/morhetz/gruvbox.git
 [submodule ".vim/pack/dist/start/vim-airline"]
     path = .vim/pack/dist/start/vim-airline
     url = https://github.com/vim-airline/vim-airline.git
@@ -24,7 +24,7 @@
     url = https://github.com/tmux-plugins/vim-tmux.git
 [submodule ".tmux/plugins/tmux-net-speed"]
     path = .tmux/plugins/tmux-net-speed
-	url = https://github.com/Juanito87/tmux-net-speed.git
+    url = https://github.com/Juanito87/tmux-net-speed.git
 [submodule ".tmux/plugins/tmux-cpu"]
     path = .tmux/plugins/tmux-cpu
     url = https://github.com/tmux-plugins/tmux-cpu.git
@@ -34,3 +34,6 @@
 [submodule ".vim/pack/dist/start/prompt-airline.vim"]
     path = .vim/pack/dist/start/prompt-airline.vim
     url = https://github.com/edkolev/promptline.vim.git
+[submodule "dracula"]
+    path = dracula
+    url = https://github.com/dracula/vim.git

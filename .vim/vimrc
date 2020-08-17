@@ -1,4 +1,4 @@
-" Basic config
+u Basic config
 set nocompatible                                                               " No compatibility with vi
 syntax enable                                                                  " Enable syntax highlight using file extension
 set autoread                                                                   " If the file is changed outside of vim, it's read again
@@ -6,7 +6,7 @@ set number relativenumber                                                      "
 set formatoptions=qln                                                          " Sets format options when pasting, q= comments can be formated, l= long lines are not broken, n= recognize numbered list when formating test. :h fo-table for reference
 let mapleader =" "                                                             " Setting leader to space bar
 set splitbelow splitright                                                      " Splits open at the bottom and right
-set viminfo+=n~/.vim/viminfo
+set viminfo+=n~/.juanito-rconf/.vim/viminfo
 
 " Clipboard integration
 set mouse=a                                                                    " Enable mouse use in all modes (n, v, i, c and h) helps with visual selection
@@ -23,13 +23,13 @@ endif
 
 " Undo files
 "" Checking and setting needed directories and permission
-if !isdirectory($HOME."/.vim")
-    call mkdir($HOME."/.vim", "", 0770)
+if !isdirectory($HOME."/.juanito-rconf/.vim")
+    call mkdir($HOME."/.juanito-rconf/.vim", "", 0770)
 endif
-if !isdirectory($HOME."/.vim/undo-dir")
-    call mkdir($HOME."/.vim/undo-dir", "", 0700)
+if !isdirectory($HOME."/.juanito-rconf/.vim/undo-dir")
+    call mkdir($HOME."/.juanito-rconf/.vim/undo-dir", "", 0700)
 endif
-set undodir=~/.vim/undo-dir                                                    " Setting dir for undo files
+set undodir=~/.juanito-rconf/.vim/undo-dir                                                    " Setting dir for undo files
 set undofile                                                                   " Enabling undo files
 
 " Indentation config
@@ -42,6 +42,8 @@ set backspace=indent,eol,start                                                 "
 set smartindent                                                                " Allows auto indent
 au FileType * set formatoptions-=c formatoptions-=r formatoptions-=o           " Disables automatic commenting with text width, on newline, or inserting with o. This config needs to execute after all filetype plugin instances
 au BufReadPost * if &modifiable | retab | endif                                " Retab when opening the document, if the file is modifiable
+au BufWritePre * %s/\s\+$//e                                                   " Automatically deletes all trailing white space at end of file on save
+au BufWritepre * %s/\n\+\%$//e                                                 " Automatically deletes all trailing newlines at end of file on save
 
 " Display options
 set showmode                                                                   " Show the current mode in use in the last line
@@ -60,7 +62,8 @@ set foldlevel=2                                                                "
 " Airline config
 set t_Co=256                                                                   " Set terminal color options
 let g:airline_powerline_fonts = 1                                              " Set powerline symbols
-colorscheme gruvbox                                                            " Set colorscheme to gruvbox plugin
+packadd! dracula                                                               " Needed for dracula to work properly
+colorscheme dracula                                                            " Set colorscheme to dracula plugin
 set background=dark                                                            " Set dark mode
 let g:airline#extensions#tmuxline#enabled = 0                                  " Set vim theme in tmux status line
 let g:airline#extensions#branch#enabled = 1                                    " Setting airline to show branches
@@ -109,10 +112,6 @@ endif
 if executable('rg')
     let g:rg_derive_root='true'
 endif
-
-" Automatically deletes all trailing white space and newlines at end of file on save
-au BufWritePre * %s/\s\+$//e
-au BufWritepre * %s/\n\+\%$//e
 
 " Netrw config
 "" Toggle function to work more like nerdtree

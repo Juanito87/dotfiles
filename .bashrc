@@ -25,16 +25,17 @@ POWERLINE_BASH_SELECT=1
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Setting tmux to launch always on gui only
-if [[ $DISPLAY ]] || [[ $HOSTNAME == Moira-Laptop ]]; then
-    # If not running interactively, do not do anything
-    # [[ $- != *i* ]] && return
-    [[ -z "$TMUX" ]] && exec tmux
-fi
+# if [[ $DISPLAY ]] || [[ $HOSTNAME == Moira-Laptop ]]; then
+#     # If not running interactively, do not do anything
+#     # [[ $- != *i* ]] && return
+#     [[ -z "$TMUX" ]] && exec tmux
+# fi
 
-# SSH for tmux test
-function ssh (){
-        /usr/bin/ssh -t "$@" "tmux attach -t $(whoami) || tmux new-session -s $(whoami)";
-    }
+# # SSH for tmux test
+# function ssh (){
+#         /usr/bin/ssh -t "$@" "tmux attach -t $(whoami) || tmux new-session -s $(whoami)";
+#     }
+
 #Enabling bash completion
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
