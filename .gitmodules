@@ -37,3 +37,6 @@
 [submodule ".vim/pack/dracula/start/dracula"]
 	path = .vim/pack/dracula/start/dracula
 	url = https://github.com/dracula/vim.git
+[submodule ".tmux/plugins/tmux-yank"]
+	path = .tmux/plugins/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank.git
