@@ -34,6 +34,6 @@
 [submodule ".vim/pack/dist/start/prompt-airline.vim"]
     path = .vim/pack/dist/start/prompt-airline.vim
     url = https://github.com/edkolev/promptline.vim.git
-[submodule "dracula"]
-    path = dracula
-    url = https://github.com/dracula/vim.git
+[submodule ".vim/pack/dracula/start/dracula"]
+	path = .vim/pack/dracula/start/dracula
+	url = https://github.com/dracula/vim.git
