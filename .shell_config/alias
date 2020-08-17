@@ -50,3 +50,6 @@ alias tkw='tmux kill-windows -t'
 #Reload rc files
 alias rrc='source ~/.bashrc'
 alias trc='tmux source-file ~/.tmux.conf'
+
+# Vim alias for remote instaces
+alias vim='vim -u ./.juanito-rconfig/.vim/vimrc'

@@ -49,14 +49,14 @@ fi
 
 # Enabling fzf for completion
 # shellcheck disable=SC1090
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.juanito-rconfig/.fzf.bash ] && source ~/.juanito-rconfig/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--height 96% --reverse --preview "cat {}"'
 
 # Calling config files
 # shellcheck disable=1090
-for f in "$HOME"/.shell_config/*;
+for f in "$HOME"/.juanito-rconfig/.shell_config/*;
 do
     if [ -d "$f" ]
         then

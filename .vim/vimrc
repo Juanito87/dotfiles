@@ -6,7 +6,8 @@ set number relativenumber                                                      "
 set formatoptions=qln                                                          " Sets format options when pasting, q= comments can be formated, l= long lines are not broken, n= recognize numbered list when formating test. :h fo-table for reference
 let mapleader =" "                                                             " Setting leader to space bar
 set splitbelow splitright                                                      " Splits open at the bottom and right
-set viminfo+=n~/.juanito-rconf/.vim/viminfo
+set viminfo+=~/.juanito-rconf/.vim/viminfo                                     " Set path for vim info file
+set path+=~/.juanito-rconf/.vim                                                " Set path for config in remote folder
 
 " Clipboard integration
 set mouse=a                                                                    " Enable mouse use in all modes (n, v, i, c and h) helps with visual selection
@@ -83,7 +84,7 @@ set ignorecase                                                                 "
 set smartcase                                                                  " Do smart case matching
 set incsearch                                                                  " Incremental search to highlight partial matches
 set hlsearch                                                                   " Highlight partial search
-set rtp+=~/.fzf                                                                " Setting fzf in runtime
+set rtp+=~/.juanito-rconfig/.fzf                                                                " Setting fzf in runtime
 function! s:update_highlights()                                                " Setting highlight to match theme
     hi CursorLine ctermbg=none guibg=none
     hi VertSplit ctermbg=none guibg=none
