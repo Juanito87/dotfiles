@@ -24,17 +24,20 @@ POWERLINE_BASH_SELECT=1
 # Colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# Setting tmux to launch always on gui only
-if [[ $DISPLAY ]] || [[ $HOSTNAME == Moira-Laptop ]]; then
+# Setting tmux to launch always on gui only or on wsl
+if [[ $DISPLAY ]] || [[ "$(< /proc/sys/kernel/osrelease)" == *Microsoft ]]; then
     # If not running interactively, do not do anything
     # [[ $- != *i* ]] && return
     [[ -z "$TMUX" ]] && exec tmux
 fi
 
-# SSH for tmux test
+# SSH for tmux test, still need to figure out how to return empty if no tmux found on remote
 function ssh (){
-        /usr/bin/ssh -t "$@" "tmux attach -t $(whoami) || tmux new-session -s $(whoami)";
+        # /usr/bin/ssh -t "$@" "command -v tmux && tmux -f \$HOME/.juanito_rconfig/.tmux.conf new -A -s $(whoami) || :";
+       # || tmux -f \$HOME/.juanito_rconfig/.tmux.conf new-session -s $(whoami)";
+       /usr/bin/ssh -t "$@" "command -v tmux &> /dev/null; if [ $? -eq 0 ]; then tmux -f \$HOME/.juanito_rconfig/.tmux.conf new -A -s $(whoami); else : ; fi";
     }
+
 #Enabling bash completion
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -52,6 +55,9 @@ fi
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--height 96% --reverse --preview "cat {}"'
+
+# Enabling tmux completion
+source .tmux/completion/completions/tmux
 
 # Calling config files
 # shellcheck disable=1090

@@ -24,7 +24,7 @@
     url = https://github.com/tmux-plugins/vim-tmux.git
 [submodule ".tmux/plugins/tmux-net-speed"]
     path = .tmux/plugins/tmux-net-speed
-	url = https://github.com/Juanito87/tmux-net-speed.git
+    url = https://github.com/Juanito87/tmux-net-speed.git
 [submodule ".tmux/plugins/tmux-cpu"]
     path = .tmux/plugins/tmux-cpu
     url = https://github.com/tmux-plugins/tmux-cpu.git
@@ -35,5 +35,8 @@
     path = .vim/pack/dist/start/prompt-airline.vim
     url = https://github.com/edkolev/promptline.vim.git
 [submodule ".tmux/plugins/tmux-yank"]
-	path = .tmux/plugins/tmux-yank
-	url = https://github.com/tmux-plugins/tmux-yank.git
+    path = .tmux/plugins/tmux-yank
+    url = https://github.com/tmux-plugins/tmux-yank.git
+[submodule ".tmux/completion"]
+    path = .tmux/completion
+    url = https://github.com/imomaliev/tmux-bash-completion.git
