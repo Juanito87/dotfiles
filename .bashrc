@@ -57,6 +57,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--height 96% --reverse --preview "cat {}"'
 
 # Enabling tmux completion
+# shellcheck disable=SC1091
 source .tmux/completion/completions/tmux
 
 # Calling config files
