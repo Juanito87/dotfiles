@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 ### ARCHIVE EXTRACTION saw it in distro tube youtube channel.
 # usage: ex <file>
