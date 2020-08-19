@@ -11,8 +11,6 @@ set viminfo+=n~/.vim/viminfo
 " Clipboard integration
 set mouse=a                                                                    " Enable mouse use in all modes (n, v, i, c and h) helps with visual selection
 set clipboard=unnamedplus                                                      " Vim buffer to system clipboard (requieres vim compiled with +clipboard)
-noremap x "_x                                                                  " Prevent x from overriding what's in the clipboard.
-noremap X "_x                                                                  " Prevent x from overriding what's in the clipboard.
 "" Integration for wsl and clipboard
 if system('uname -r') =~ "Microsoft"
     augroup Yank
