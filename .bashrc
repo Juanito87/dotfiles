@@ -33,9 +33,12 @@ fi
 
 # SSH for tmux test, still need to figure out how to return empty if no tmux found on remote
 function ssh (){
-        # /usr/bin/ssh -t "$@" "command -v tmux && tmux -f \$HOME/.juanito_rconfig/.tmux.conf new -A -s $(whoami) || :";
-       # || tmux -f \$HOME/.juanito_rconfig/.tmux.conf new-session -s $(whoami)";
-       /usr/bin/ssh -t "$@" "command -v tmux &> /dev/null; if [ $? -eq 0 ]; then tmux -f \$HOME/.juanito_rconfig/.tmux.conf new -A -s $(whoami); else : ; fi";
+    # This one liner do:
+    # - Checks if tmux is present
+    # - Checks if tmux conf is present in specified route
+    # - Attachs or connnects to tmux
+    # - If tmux is not present, starts a normal shell, and sends a goodbye message once you disconnect
+       /usr/bin/ssh -t "$@" "if command -v tmux &>/dev/null; then if [ -f \$HOME/.juanito_rconfig/.tmux.conf ]; then tmux -f \$HOME/.juanito_rconfig/.tmux.conf new -A -s $(whoami) &> /dev/null; else tmux new -A -s $(whoami); fi; else \$SHELL -l; echo "Fin de la sesión"; fi;"
     }
 
 #Enabling bash completion
