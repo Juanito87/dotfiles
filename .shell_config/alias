@@ -2,6 +2,9 @@
 ##  Alias
 ##==============================================================================
 
+# Enabling alias expansio, to use them in vim
+shopt -s expand_aliases
+
 # Improving readability options with:
 # - Color coding
 # - Human readable

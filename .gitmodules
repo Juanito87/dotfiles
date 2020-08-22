@@ -40,3 +40,6 @@
 [submodule ".tmux/completion"]
     path = .tmux/completion
     url = https://github.com/imomaliev/tmux-bash-completion.git
+[submodule ".vim/pack/themes/opt/dracula"]
+	path = .vim/pack/themes/opt/dracula
+	url = https://github.com/dracula/vim.git

@@ -58,6 +58,8 @@ set foldlevel=2                                                                "
 " Airline config
 set t_Co=256                                                                   " Set terminal color options
 let g:airline_powerline_fonts = 1                                              " Set powerline symbols
+" packadd! dracula                                                               " Needed for dracula to start
+" colorscheme dracula                                                            " Set colorscheme to dracula plugin
 colorscheme gruvbox                                                            " Set colorscheme to gruvbox plugin
 set background=dark                                                            " Set dark mode
 let g:airline#extensions#tmuxline#enabled = 0                                  " Set vim theme in tmux status line
@@ -161,12 +163,18 @@ augroup netrw_mapping
 augroup END
 
 " Mappings
-"" Adding remap for to manage splits. Moving, closing, opening splits.
+"" Adding remap for to manage splits. Moving, closing, resizing, opening splits.
 map <silent> <C-h> WinMoveLeft
 map <silent> <C-j> WinMoveDown
 map <silent> <C-k> WinMoveUp
 map <silent> <C-l> WinMoveRight
 nnoremap <C-C> <C-W><C-C>
+if bufwinnr(1)
+    map <S-K> <C-W>+
+    map <S-J> <C-W>-
+    map <S-H> <c-w><
+    map <S-L> <c-w>>
+endif
 " Move to the window in the direction shown, or create a new window
 function s:WinMove(key)
     let t:curwin = winnr()
@@ -212,3 +220,6 @@ map <leader>n :lnext<CR>
 map <leader>p :lprevious<CR>
 map <leader>c :lclose<CR>
 map <leader>o :lopen <bar>
+
+" Enabling use of alias from vim
+let $BASH_ENV = "~/.shell_config/alias"

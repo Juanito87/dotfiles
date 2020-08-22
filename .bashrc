@@ -63,6 +63,11 @@ export FZF_DEFAULT_OPTS='--height 96% --reverse --preview "cat {}"'
 # shellcheck disable=SC1091
 source .tmux/completion/completions/tmux
 
+# Enabling prompt
+# shellcheck disable=SC1091
+source .prompt/prompt-gruvbox.sh
+
+
 # Calling config files
 # shellcheck disable=1090
 for f in "$HOME"/.shell_config/*;
