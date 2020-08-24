@@ -9,9 +9,8 @@ sudo pear install PHP_CodeSniffer
 
 # Variable for naming the conf folder
 cf=".juanito_rc"
-
-mkdir $cf
-chown "$(logname)":"$(logname)" -R $cf
+action=$1
+# mkdir $cf
 
 action=$(promptUser "Would you like to install for local or remote machine?" "[l] local / [r] remote. Default l" "lLrR" "l")
 # shellcheck disable=SC2034
@@ -21,8 +20,10 @@ case "$action" in
     *)      printError "Invalid option"; exit 1
 esac
 
-# Setting user for the personalized config
-su "$(logname)"<<"EOF"
+chown "$(logname)":"$(logname)" -R $install_folder
+
+# # Setting user for the personalized config
+# su "$(logname)"<<"EOF"
 
 # Setting git options for vim
 git config --global merge.tool vimdiff
@@ -37,17 +38,26 @@ cd $install_folder
 mkdir -p .config-backup && \
 /usr/bin/git --git-dir=$install_folder/.cfg --work-tree=$install_folder checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | \
 xargs -I{} mv {} .config-backup/{}
+rm README.md installer.sh
 /usr/bin/git --git-dir=$install_folder/.cfg/ --work-tree=$install_folder checkout
 /usr/bin/git --git-dir=$install_folder/.cfg/ --work-tree=$install_folder config --local status.showUntrackedFiles no
-# /usr/bin/git --git-dir=$install_folder/.cfg/ --work-tree=$install_folder submodule init
-# /usr/bin/git --git-dir=$install_folder/.cfg/ --work-tree=$install_folder submodule update
 ## Cloning the rest of the config repos
-git clone --depth 1 https://github.com/Juanito87/shell-config.git .shell_config
-git clone --depth 1 https://github.com/Juanito87/tmux-conf .tmux
-git clone --depth 1 https://github.com/Juanito87/vim-config .vim
+git clone --depth 1 https://github.com/Juanito87/.shell_config.git
+git clone --depth 1 https://github.com/Juanito87/.prompt.git
+git clone --depth 1 https://github.com/Juanito87/.tmux.git
+cd .tmux
+git submodule init
+git submodule update
+cd ..
+git clone --depth 1 https://github.com/Juanito87/.vim.git
+cd .vim
+git submodule init
+git submodule update
+cd ..
 ## Setting helptags for vim plugins
-vim -u NONE -c "helptags pormpt-airline.vim/doc" -c q
-vim -u NONE -c "helptags vim-airline/doc" -c q
+cd .vim/pack
+vim -u NONE -c "helptags dist/start/pormpt-airline.vim/doc" -c q
+vim -u NONE -c "helptags dist/start/vim-airline/doc" -c q
 vim -u NONE -c "helptags dracula/doc" -c q
 vim -u NONE -c "helptags fzf/doc" -c q
 vim -u NONE -c "helptags gruvbox/doc" -c q
@@ -67,4 +77,3 @@ fi
 source $install_folder/.bashrc
 
 echo "You should see the new prompt now"
-EOF
