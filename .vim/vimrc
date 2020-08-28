@@ -3,7 +3,7 @@ set nocompatible                                                               "
 syntax enable                                                                  " Enable syntax highlight using file extension
 set autoread                                                                   " If the file is changed outside of vim, it's read again
 set number relativenumber                                                      " Turn hybrid line numbers on
-set formatoptions=qln                                                          " Sets format options when pasting, q= comments can be formated, l= long lines are not broken, n= recognize numbered list when formating test. :h fo-table for reference
+set formatoptions=qln                                                          " Sets format options when pasting, q= comments can be formatted, l= long lines are not broken, n= recognize numbered list when formatting test. :h fo-table for reference
 let mapleader =" "                                                             " Setting leader to space bar
 set splitbelow splitright                                                      " Splits open at the bottom and right
 set viminfo+=n~/.vim/viminfo
@@ -35,10 +35,10 @@ filetype plugin indent on                                                      "
 set tabstop=4                                                                  " When indenting with '>', use 4 spaces width
 set shiftwidth=4                                                               " On pressing tab, insert 4 spaces
 set expandtab                                                                  " Source a global configuration file if available
-set smarttab                                                                   " Inserts or delete shiftwidth worth of space
+set smarttab                                                                   " Inserts or delete shift width worth of space
 set backspace=indent,eol,start                                                 " Allows backspace to delete normally in insert mode
 set smartindent                                                                " Allows auto indent
-au FileType * set formatoptions-=c formatoptions-=r formatoptions-=o           " Disables automatic commenting with text width, on newline, or inserting with o. This config needs to execute after all filetype plugin instances
+au FileType * set formatoptions-=c formatoptions-=r formatoptions-=o           " Disables automatic commenting with text width, on newline, or inserting with o. This config needs to execute after all file type plugin instances
 au BufReadPost * if &modifiable | retab | endif                                " Retab when opening the document, if the file is modifiable
 
 " Display options
@@ -59,8 +59,8 @@ set foldlevel=2                                                                "
 set t_Co=256                                                                   " Set terminal color options
 let g:airline_powerline_fonts = 1                                              " Set powerline symbols
 " packadd! dracula                                                               " Needed for dracula to start
-" colorscheme dracula                                                            " Set colorscheme to dracula plugin
-colorscheme gruvbox                                                            " Set colorscheme to gruvbox plugin
+" colorscheme dracula                                                            " Set color scheme to dracula plugin
+colorscheme gruvbox                                                            " Set color scheme to gruvbox plugin
 set background=dark                                                            " Set dark mode
 let g:airline#extensions#tmuxline#enabled = 0                                  " Set vim theme in tmux status line
 let g:airline#extensions#branch#enabled = 1                                    " Setting airline to show branches
@@ -188,7 +188,7 @@ function s:WinMove(key)
         exec "wincmd ".a:key
     endif
 endfunction
-" Call to function definiton
+" Call to function definition
 " Navigate to pane to the left, or create a new pane
 nnoremap WinMoveLeft :<C-U>call <SID>WinMove('h')<CR>
 " Navigate to pane to below, or create a new pane
@@ -203,7 +203,7 @@ let g:syntastic_always_populate_loc_list = 1                    " Always put det
 let g:syntastic_auto_jump = 1                                   " Jumps directly to first error on open
 let g:syntastic_auto_loc_list = 1                               " Opens error windows if errors are detected
 let g:syntastic_check_on_open = 1                               " Check for syntax errors on open
-let g:syntastic_check_on_wq = 0                                 " Do not check files if quiting
+let g:syntastic_check_on_wq = 0                                 " Do not check files if quitting
 let g:syntastic_error_symbol = "✗"                              " Mapping error symbol
 let g:syntastic_warning_symbol = "⚠"                            " Mapping warning symbol
 let g:syntastic_json_checkers = ["jsonlint"]                    " Setting json linter
@@ -213,7 +213,7 @@ let g:syntastic_css_checkers = ["phpcs"]                        " Setting css li
 let g:syntastic_dockerfile_checkers = ["dockerfile-lint"]       " Setting dockerfile linter
 let g:syntastic_html_checkers = ["w3"]                          " Setting html linter
 let g:syntastic_filetype_map = {"Dockerfile": "dockerfile"}     " Map dockerfiles with lower case as dockerfiles
-au FileType qf wincmd L                                         " Seting quickfix/loclist to the right side of the screen
+au FileType qf wincmd L                                         " Setting quickfix/loclist to the right side of the screen
 au FileType qf vertical resize 80                               " Resize quickfix/loclist to 80 lines
 "" Mappings for allowing quick jump to errors, closing and opening loclist
 map <leader>n :lnext<CR>
@@ -222,4 +222,4 @@ map <leader>c :lclose<CR>
 map <leader>o :lopen <bar>
 
 " Enabling use of alias from vim
-let $BASH_ENV = "~/.shell_config/alias"
+let $BASH_ENV = "~/.vim/bash_env"
