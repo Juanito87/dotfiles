@@ -43,6 +43,7 @@ rm README.md installer.sh
 /usr/bin/git --git-dir=$install_folder/.cfg/ --work-tree=$install_folder config --local status.showUntrackedFiles no
 ## Cloning the rest of the config repos
 git clone --depth 1 https://github.com/Juanito87/.shell_config.git
+rm .shell_config/README.MD
 git clone --depth 1 https://github.com/Juanito87/.prompt.git
 git clone --depth 1 https://github.com/Juanito87/.tmux.git
 cd .tmux
