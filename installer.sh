@@ -38,10 +38,11 @@ cd $install_folder
 mkdir -p .config-backup && \
 /usr/bin/git --git-dir=$install_folder/.cfg --work-tree=$install_folder checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | \
 xargs -I{} mv {} .config-backup/{}
-rm README.md installer.sh
 /usr/bin/git --git-dir=$install_folder/.cfg/ --work-tree=$install_folder checkout
+rm README.md installer.sh
 /usr/bin/git --git-dir=$install_folder/.cfg/ --work-tree=$install_folder config --local status.showUntrackedFiles no
 ## Cloning the rest of the config repos
+cd $install_folder
 git clone --depth 1 https://github.com/Juanito87/.shell_config.git
 rm .shell_config/README.MD
 git clone --depth 1 https://github.com/Juanito87/.prompt.git
@@ -68,6 +69,7 @@ vim -u NONE -c "helptags tpope/start/fugitive/doc" -c q
 vim -u NONE -c "helptags tpope/start/commentary/doc" -c q
 vim -u NONE -c "helptags tpope/start/surround/doc" -c q
 vim -u NONE -c "helptags vim-syntastic/start/doc" -c q
+cd
 
 if [ $synergy == "false" ]; then
     rm .synergy.conf
