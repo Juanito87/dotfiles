@@ -38,8 +38,9 @@ cd $install_folder
 mkdir -p .config-backup && \
 /usr/bin/git --git-dir=$install_folder/.cfg --work-tree=$install_folder checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | \
 xargs -I{} mv {} .config-backup/{}
-/usr/bin/git --git-dir=$install_folder/.cfg/ --work-tree=$install_folder checkout
 rm README.md installer.sh
+/usr/bin/git --git-dir=$install_folder/.cfg/ --work-tree=$install_folder checkout
+rm README.md
 /usr/bin/git --git-dir=$install_folder/.cfg/ --work-tree=$install_folder config --local status.showUntrackedFiles no
 ## Cloning the rest of the config repos
 cd $install_folder
