@@ -33,14 +33,14 @@ git config --global core.excludesfile $install_folder/.gitignore-global
 ## This dot files will point to different repos with the actual config.
 ## This will avoid the problems of having $HOME as a full git repo, and treat the directories with configuration files as normal repos.
 ## The clone process will create a bare repo(--bare), anc get only the latest version (--depth 1).
-git clone --bare --depth 1 https://github.com/Juanito87/dotfiles.git $install_folder/.cfg
+git clone --bare --depth 1 --branch=v2 https://github.com/Juanito87/dotfiles.git $install_folder/.cfg
 cd $install_folder
 mkdir -p .config-backup && \
 /usr/bin/git --git-dir=$install_folder/.cfg --work-tree=$install_folder checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | \
 xargs -I{} mv {} .config-backup/{}
 rm README.md installer.sh
 /usr/bin/git --git-dir=$install_folder/.cfg/ --work-tree=$install_folder checkout
-rm README.md
+rm $install_folder/.shell_config/README.md
 /usr/bin/git --git-dir=$install_folder/.cfg/ --work-tree=$install_folder config --local status.showUntrackedFiles no
 ## Cloning the rest of the config repos
 cd $install_folder
