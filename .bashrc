@@ -10,3 +10,5 @@ do
             source "$f";
     fi
 done
+# Sourcing prompt
+source $HOME/.prompt/prompt-gruvbox.sh 
