@@ -57,18 +57,17 @@ git submodule update
 cd ..
 ## Setting helptags for vim plugins
 cd .vim/pack
-vim -u NONE -c "helptags dist/start/pormpt-airline.vim/doc" -c q
+vim -u NONE -c "helptags dist/start/pormpt-airline/doc" -c q
 vim -u NONE -c "helptags dist/start/vim-airline/doc" -c q
-vim -u NONE -c "helptags dracula/doc" -c q
-vim -u NONE -c "helptags fzf/doc" -c q
-vim -u NONE -c "helptags gruvbox/doc" -c q
-vim -u NONE -c "helptags tmuxline.vim/doc" -c q
+vim -u NONE -c "helptags themes/opt/dracula/doc" -c q
+vim -u NONE -c "helptags fzf/start/doc" -c q
+vim -u NONE -c "helptags themes/start/gruvbox/doc" -c q
+vim -u NONE -c "helptags tmuxline/doc" -c q
 vim -u NONE -c "helptags vim-tmux/doc" -c q
-vim -u NONE -c "helptags fugitive/doc" -c q
-vim -u NONE -c "helptags commentary/doc" -c q
-vim -u NONE -c "helptags fugitive/doc" -c q
-vim -u NONE -c "helptags surround/doc" -c q
-vim -u NONE -c "helptags vim-syntastic/doc" -c q
+vim -u NONE -c "helptags tpope/start/fugitive/doc" -c q
+vim -u NONE -c "helptags tpope/start/commentary/doc" -c q
+vim -u NONE -c "helptags tpope/start/surround/doc" -c q
+vim -u NONE -c "helptags vim-syntastic/start/doc" -c q
 
 if [ $synergy == "false" ]; then
     rm .synergy.conf
