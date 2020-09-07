@@ -10,13 +10,13 @@ sudo pear install PHP_CodeSniffer
 # Variable for naming the conf folder
 cf=".juanito_rc"
 action=$1
-# mkdir $cf
+
 
 action=$(promptUser "Would you like to install for local or remote machine?" "[l] local / [r] remote. Default l" "lLrR" "l")
 # shellcheck disable=SC2034
 case "$action" in
     ""|l|L )    install_folder="$HOME" && synergy="true" ;;
-    r|R )       install_folder="$HOME/$cf" && synergy="false" ;;
+    r|R )       install_folder="$HOME/$cf" && synergy="false" && mkdir $cf;;
     *)      printError "Invalid option"; exit 1
 esac
 
