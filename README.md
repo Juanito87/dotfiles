@@ -18,12 +18,12 @@ Each config will be on a different repo, this will allow:
 - git
 - shellcheck
 - php
--- php-pear
---- PHP_CodeSniffer
+  - php-pear
+    - PHP_CodeSniffer
 - npm
--- jsonlint
--- dockerfile_lint
--- js-yaml
+  - jsonlint
+  - dockerfile_lint
+  - js-yaml
 - ripgrep 
 - zstd
 - gzip
