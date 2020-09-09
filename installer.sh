@@ -1,18 +1,9 @@
 #!/bin/sh
 
-# Installing dependencies
-sudo apt update && sudo apt upgrade -y
-sudo apt install -y vim powerline git shellcheck php php-pear npm ripgrep \
-        zstd gzip unzip bzip2 fzf
-sudo npm install -g jsonlint dockerfile_lint js-yaml
-sudo pear install PHP_CodeSniffer
-
 # Variable for naming the conf folder
 cf=".juanito_rc"
 action=$1
 
-
-action=$(promptUser "Would you like to install for local or remote machine?" "[l] local / [r] remote. Default l" "lLrR" "l")
 # shellcheck disable=SC2034
 case "$action" in
     ""|l|L )    install_folder="$HOME" && synergy="true" ;;
@@ -21,9 +12,6 @@ case "$action" in
 esac
 
 chown "$(logname)":"$(logname)" -R $install_folder
-
-# # Setting user for the personalized config
-# su "$(logname)"<<"EOF"
 
 # Setting git options for vim
 git config --global merge.tool vimdiff
@@ -58,20 +46,19 @@ git submodule init
 git submodule update
 cd ..
 ## Setting helptags for vim plugins
-cd .vim/pack
-vim -u NONE -c "helptags dist/start/pormpt-airline/doc" -c q
-vim -u NONE -c "helptags dist/start/vim-airline/doc" -c q
-vim -u NONE -c "helptags themes/opt/dracula/doc" -c q
-vim -u NONE -c "helptags fzf/start/doc" -c q
-vim -u NONE -c "helptags themes/start/gruvbox/doc" -c q
-vim -u NONE -c "helptags tmuxline/doc" -c q
-vim -u NONE -c "helptags vim-tmux/doc" -c q
-vim -u NONE -c "helptags tpope/start/fugitive/doc" -c q
-vim -u NONE -c "helptags tpope/start/commentary/doc" -c q
-vim -u NONE -c "helptags tpope/start/surround/doc" -c q
-vim -u NONE -c "helptags vim-syntastic/start/doc" -c q
-cd
+vim -u NONE -c "helptags $install_folder/.vim/pack/dist/start/pormpt-airline/doc" -c q
+vim -u NONE -c "helptags $install_folder/.vim/pack/dist/start/vim-airline/doc" -c q
+vim -u NONE -c "helptags $install_folder/.vim/pack/themes/opt/dracula/doc" -c q
+vim -u NONE -c "helptags $install_folder/.vim/pack/fzf/start/doc" -c q
+vim -u NONE -c "helptags $install_folder/.vim/pack/themes/start/gruvbox/doc" -c q
+vim -u NONE -c "helptags $install_folder/.vim/pack/tmuxline/doc" -c q
+vim -u NONE -c "helptags $install_folder/.vim/pack/vim-tmux/doc" -c q
+vim -u NONE -c "helptags $install_folder/.vim/pack/tpope/start/fugitive/doc" -c q
+vim -u NONE -c "helptags $install_folder/.vim/pack/tpope/start/commentary/doc" -c q
+vim -u NONE -c "helptags $install_folder/.vim/pack/tpope/start/surround/doc" -c q
+vim -u NONE -c "helptags $install_folder/.vim/pack/vim-syntastic/start/doc" -c q
 
+# Cleaning up
 if [ $synergy == "false" ]; then
     rm .synergy.conf
 fi
@@ -79,4 +66,5 @@ fi
 # Sourcing config
 source $install_folder/.bashrc
 
+# Finishing
 echo "You should see the new prompt now"
