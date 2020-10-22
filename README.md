@@ -1,9 +1,9 @@
 # To do
 
-Add check for remote config folder, if exist source it, of not source normal route.
-Evaluate adding dependencies to the installer.
-Move installer to a gist, so the readme can have a one liner to call.
-Try to define dependencies that can be installed vendor agnostic, from the ones that not.
+- Add check for remote config folder, if exist source it, of not source normal route
+- Evaluate adding dependencies to the installer
+- Move installer to a gist, so the readme can have a one liner to call
+- Try to define dependencies that can be installed vendor agnostic, from the ones that not
 
 # Dot files configuration
 
