@@ -18,6 +18,10 @@ POWERLINE_BASH_CONTINUATION=1
 # shellcheck disable=SC2034
 POWERLINE_BASH_SELECT=1
 
+# Setting env for remote config
+# shellcheck disable=SC2034
+cf=".juanito_rc"
+
 # Make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -38,7 +42,7 @@ function ssh (){
     # - Checks if tmux conf is present in specified route
     # - Attachs or connnects to tmux
     # - If tmux is not present, starts a normal shell, and sends a goodbye message once you disconnect
-       /usr/bin/ssh -t "$@" "if command -v tmux &>/dev/null; then if [ -f \$HOME/.juanito_rconfig/.tmux.conf ]; then tmux -f \$HOME/.juanito_rconfig/.tmux.conf new -A -s $(whoami) &> /dev/null; else tmux new -A -s $(whoami); fi; else \$SHELL -l; echo "Fin de la sesión"; fi;"
+       /usr/bin/ssh -t "$@" "if command -v tmux &>/dev/null; then if [ -f \$HOME/$(cf)/.tmux.conf ]; then tmux -f \$HOME/$(cf)/.tmux.conf new -A -s $(whoami) &> /dev/null; else tmux new -A -s $(whoami); fi; else \$SHELL -l; echo "Fin de la sesión"; fi;"
     }
 
 #Enabling bash completion
@@ -60,13 +64,12 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--height 96% --reverse --preview "cat {}"'
 
 # Enabling tmux completion
-# shellcheck disable=SC1091
-source .tmux/completion/completions/tmux
+# shellcheck disable=SC1091 disable=1090
+source "$HOME"/.tmux/completion/completions/tmux
 
 # Enabling prompt
-# shellcheck disable=SC1091
-source .prompt/prompt-gruvbox.sh
-
+# shellcheck disable=SC1091 disable=1090
+source "$HOME"/.prompt/prompt-gruvbox.sh
 
 # Calling config files
 # shellcheck disable=1090

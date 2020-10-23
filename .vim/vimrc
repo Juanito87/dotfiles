@@ -57,6 +57,12 @@ set foldlevel=2                                                                "
 
 " Airline config
 set t_Co=256                                                                   " Set terminal color options
+" let g:promptline_preset = {
+"         \'a' : [ promptline#slices#host() ],
+"         \'b' : [ promptline#slices#user() ],
+"         \'c' : [ promptline#slices#cwd() ],
+"         \'y' : [ promptline#slices#vcs_branch(), promptline#slices#git_status() ],
+"         \'warn' : [ promptline#slices#last_exit_code(), promptline#slices#jobs() ]}
 let g:airline_powerline_fonts = 1                                              " Set powerline symbols
 " packadd! dracula                                                               " Needed for dracula to start
 " colorscheme dracula                                                            " Set colorscheme to dracula plugin
@@ -223,3 +229,9 @@ map <leader>o :lopen <bar>
 
 " Enabling use of alias from vim
 let $BASH_ENV = "~/.shell_config/alias"
+" let g:promptline_preset = {
+"             \'a' : [ prompline#slices#host() ],
+"             \'b' : [ promptline#slices#user() ],
+"             \'c' : [ promptline#slices#cwd() ],
+"             \'y' : [ promptline#slices#vcs_branch(),  promptline#slices#git_status()],
+"             \'warn' : [ promptline#slices#last_exit_code(), promptline#slices#jobs() ]}
