@@ -29,7 +29,7 @@ cf=".juanito_rc"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Setting tmux to launch always on gui only or on wsl
-if [[ $DISPLAY ]] || [[ "$(< /proc/sys/kernel/osrelease)" == *Microsoft ]]; then
+if [[ $DISPLAY ]] || [[ "$(< /proc/sys/kernel/osrelease)" == *microsoft* ]]; then
     # If not running interactively, do not do anything
     # [[ $- != *i* ]] && return
     [[ -z "$TMUX" ]] && exec tmux

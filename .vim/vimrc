@@ -218,6 +218,7 @@ let g:syntastic_php_checkers = ["php","phpcs"]                  " Setting php li
 let g:syntastic_css_checkers = ["phpcs"]                        " Setting css linter
 let g:syntastic_dockerfile_checkers = ["dockerfile-lint"]       " Setting dockerfile linter
 let g:syntastic_html_checkers = ["w3"]                          " Setting html linter
+let g:syntastic_python_checkers = ["pylint"]                    " Setting python linter
 let g:syntastic_filetype_map = {"Dockerfile": "dockerfile"}     " Map dockerfiles with lower case as dockerfiles
 au FileType qf wincmd L                                         " Seting quickfix/loclist to the right side of the screen
 au FileType qf vertical resize 80                               " Resize quickfix/loclist to 80 lines
@@ -229,6 +230,16 @@ map <leader>o :lopen <bar>
 
 " Enabling use of alias from vim
 let $BASH_ENV = "~/.shell_config/alias"
+
+" Setting programing tools
+augroup runprog
+    autocmd!
+    autocmd BufRead,BufNewFile *.py nnoremap <F5> :exec '!python3' shellescape(@%, 1)<cr>
+augroup END
+augroup compprog
+    autocmd!
+    autocmd BufRead,BufNewFile *.py nnoremap <F6> :exec '!python3 -m' shellescape(@%, 1)<cr>
+augroup END
 " let g:promptline_preset = {
 "             \'a' : [ prompline#slices#host() ],
 "             \'b' : [ promptline#slices#user() ],
