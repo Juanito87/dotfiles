@@ -1,0 +1,20 @@
+#!/bin/bash
+
+function memo()
+{
+# Telling closing condition
+printf "Presione ESC para finalizar"
+# Check that there is only one parameter
+    if [ $# -eq 1 ]
+    then
+        case $1 in
+           # Compara el valor y asigna el comando a mostrar para el help, agregar un case a futuro
+           "alias") grep "alias " "$HOME"/.shell_config/alias | fzf ;;
+           "commands") < "$HOME"/.shell_config/resumen fzf ;;
+           *) printf "Las opciones disponibles actualmente son \nalias\ncommands\n" ;;
+        esac
+    else
+       printf "El comando solo acepta un parámetro\nLas opciones disponibles actualmente son:\nalias\ncommands\n"
+    fi
+    return 0
+}
