@@ -20,7 +20,7 @@ POWERLINE_BASH_SELECT=1
 
 # Setting env for remote config
 # shellcheck disable=SC2034
-# cf=".juanito_rc"
+cf=".juanito_rc"
 
 # Make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -43,8 +43,8 @@ function ssh (){
     # - Attachs or connnects to tmux
     # - If tmux is not present, starts a normal shell, and sends a goodbye message once you disconnect
 # shellcheck disable=SC2034
-cf=".juanito_rc"
-       /usr/bin/ssh -t "$@" "if command -v tmux &>/dev/null; then if [ -f \$HOME/$(cf)/.tmux.conf ] &>/dev/null; then tmux -f \$HOME/$(cf)/.tmux.conf new -A -s $(whoami) &> /dev/null; else tmux new -A -s $(whoami); fi; else \$SHELL -l; echo "Fin de la sesión"; fi;"
+# cf=".juanito_rc"
+       /usr/bin/ssh -t "$@" "if command -v tmux &>/dev/null; then if [ -f \$HOME/\"$cf\"/.tmux.conf ] &>/dev/null; then tmux -f \$HOME/\"$cf\"/.tmux.conf new -A -s $(whoami) &> /dev/null; else tmux new -A -s $(whoami); fi; else \$SHELL -l; echo "Fin de la sesión"; fi;"
     }
 
 #Enabling bash completion

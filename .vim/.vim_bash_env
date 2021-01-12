@@ -1,0 +1,12 @@
+#!/bin/bash
+# Configurations to use shell_config personalizations from vim
+# avoiding to call unnecessary things like tmux config from bashrc
+# Enabling alias expansion in non-interactive sessions (vim session)
+shopt -s expand_aliases
+# sourcing alias
+source ~/.shell_config/alias
+# sourcing personalized commands
+for f in ~/.shell_config/commands/*;
+do
+    source "$f";
+done

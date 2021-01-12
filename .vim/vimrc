@@ -1,8 +1,9 @@
 " Basic config
-set nocompatible                                                               " No compatibility with vi
 syntax enable                                                                  " Enable syntax highlight using file extension
+set nocompatible                                                               " No compatibility with vi
 set autoread                                                                   " If the file is changed outside of vim, it's read again
 set number relativenumber                                                      " Turn hybrid line numbers on
+set nu                                                                         " Shows current line number instead of 0
 set formatoptions=qln                                                          " Sets format options when pasting, q= comments can be formatted, l= long lines are not broken, n= recognize numbered list when formatting test. :h fo-table for reference
 let mapleader =" "                                                             " Setting leader to space bar
 set splitbelow splitright                                                      " Splits open at the bottom and right
@@ -29,6 +30,7 @@ if !isdirectory($HOME."/.vim/undo-dir")
 endif
 set undodir=~/.vim/undo-dir                                                    " Setting dir for undo files
 set undofile                                                                   " Enabling undo files
+set noswapfile                                                                 " Disable swap files for vim files, undo will do the trick
 
 " Indentation config
 filetype plugin indent on                                                      " When indenting with '>', use 4 spaces width
@@ -83,13 +85,14 @@ set wildmode=longest,list,full                                                 "
 set wildmenu                                                                   " Display matching files when we tab complete
 set showmatch                                                                  " Show matching brackets
 set ignorecase                                                                 " Do case insensitive matching
-set smartcase                                                                  " Do smart case matching
+set smartcase                                                                  " Do smart case matching, ignorecase needs to be set
 set incsearch                                                                  " Incremental search to highlight partial matches
 set hlsearch                                                                   " Highlight partial search
+set nohlsearch                                                                 " clear highlight after search is finished
 set rtp+=~/.fzf                                                                " Setting fzf in runtime
 function! s:update_highlights()                                                " Setting highlight to match theme
     hi CursorLine ctermbg=none guibg=none
-    hi VertSplit ctermbg=none guibg=none
+    hi VertSplit ctermbg=none guibg=none/
 endfunction
 autocmd User AirlineAfterTheme call s:update_highlights()
 
@@ -229,7 +232,8 @@ map <leader>c :lclose<CR>
 map <leader>o :lopen <bar>
 
 " Enabling use of alias from vim
-let $BASH_ENV = "~/.shell_config/alias"
+" let $BASH_ENV = "~/.shell_config/alias"
+let $BASH_ENV = "~/.vim/bash_env"
 
 " Setting programing tools
 augroup runprog
@@ -240,10 +244,3 @@ augroup compprog
     autocmd!
     autocmd BufRead,BufNewFile *.py nnoremap <F6> :exec '!python3 -m' shellescape(@%, 1)<cr>
 augroup END
-" let g:promptline_preset = {
-"             \'a' : [ prompline#slices#host() ],
-"             \'b' : [ promptline#slices#user() ],
-"             \'c' : [ promptline#slices#cwd() ],
-"             \'y' : [ promptline#slices#vcs_branch(),  promptline#slices#git_status()],
-"             \'warn' : [ promptline#slices#last_exit_code(), promptline#slices#jobs() ]}
-let $BASH_ENV = "~/.vim/bash_env"
