@@ -4,6 +4,9 @@ zstyle ':completion:*' matcher-list ''
 zstyle ':completion:*' max-errors 2
 zstyle ':completion:*' prompt '*'
 zstyle :compinstall filename '$HOME/.zshrc'
+# git completion
+zstyle ':completion:*:*:git:*' script ~/.shell_config/zsh/git/git-completion.zsh
+fpath=(~/.shell_config/zsh $fpath)
 autoload -Uz compinit
 compinit
 # set change directory without cd and notification for background jobs

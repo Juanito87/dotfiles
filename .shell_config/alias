@@ -47,6 +47,8 @@ alias sshdot='/usr/bin/git --git-dir=$HOME/.sshcfg/ --work-tree=$HOME/.ssh'
 # shellcheck disable=SC2009
 if [[ $(ps -p $$ | grep sh | awk '{print $(NF)}') = "$shell" ]]; then
     if [ -f "/usr/share/bash-completion/completions/git" ]; then
+        # shellcheck disable=SC1091
+        . /usr/share/bash-completion/completions/git
         __git_complete sshdot __git_main
         __git_complete gitdot __git_main
         __git_complete gitdotsm _git_submodule
@@ -56,7 +58,7 @@ if [[ $(ps -p $$ | grep sh | awk '{print $(NF)}') = "$shell" ]]; then
         __git_complete gitrdotsm _git_submodule
         __git_complete gitrdotsma _git_submodule
         __git_complete gitrdotsmu _git_submodule
-    fi
+   fi
 fi
 
 # Tmux Alias

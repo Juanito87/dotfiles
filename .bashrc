@@ -87,7 +87,12 @@ for f in "$HOME"/.shell_config/*;
 do
     if [ -d "$f" ]
         then
-            for g in "$f"/*; do source "$g"; done
+            for g in "$f"/*; do
+               if [ -f "$g" ]
+                then
+                   source "$g";
+               fi
+            done
         else
             source "$f";
     fi
