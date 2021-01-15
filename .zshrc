@@ -1,33 +1,32 @@
 # The following lines were added by compinstall
-
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' matcher-list ''
 zstyle ':completion:*' max-errors 2
 zstyle ':completion:*' prompt '*'
-zstyle :compinstall filename '/home/juanito/.zshrc'
-
+zstyle :compinstall filename '$HOME/.zshrc'
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
-# Lines configured by zsh-newuser-install
-# HISTFILE=~/.histfile
-# HISTSIZE=10000
-# SAVEHIST=1000
+# set change directory without cd and notification for background jobs
 setopt autocd notify
 # Setting vi mode for zsh
 bindkey -v
-# End of lines configured by zsh-newuser-install
 # remplazo de shopt para bash
 setopt kshglob
 # eliminar no match message
 unsetopt nomatch
 # Setting prompt
 source ~/.prompt/prompt-dracula.sh
-# source ~/.shell_config/alias
-
-# Enabling fzf for completion
+# fzf config
 # shellcheck disable=SC1090
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [[ ! "$PATH" == *$HOME/.fzf/bin* ]]; then
+  export PATH="${PATH:+${PATH}:}$HOME/.fzf/bin"
+fi
+# Auto-completion
+# shellcheck disable=SC1090
+[[ $- == *i* ]] && source "$HOME/.fzf/shell/completion.zsh" 2> /dev/null
+# Key bindings
+# shellcheck disable=SC1090
+source "$HOME/.fzf/shell/key-bindings.zsh"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--height 96% --reverse --preview "cat {}"'

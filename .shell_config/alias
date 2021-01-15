@@ -1,13 +1,13 @@
+#!/bin/bash
 ##==============================================================================
 ##  Alias
 ##==============================================================================
-
 # Enabling Alias expansion, to use them in vim
-# Poner if para validar la terminal, zsh no lo toma
-# if [[ -n ${ZSH_VERSION-} ]]; then
-# else
-    shopt -s expand_aliases;
-# fi
+shell="bash"
+# shellcheck disable=SC2009
+if [[ $(ps -p $$ | grep sh | awk '{print $(NF)}') = "$shell" ]]; then
+   shopt -s expand_aliases
+fi
 
 # Improving readability options with:
 # - Color coding
@@ -44,22 +44,20 @@ alias gitrdotsm='/usr/bin/git --git-dir=$HOME/.juanito_rconfig/.cfg/ --work-tree
 alias gitrdotsma='/usr/bin/git --git-dir=$HOME/.juanito_rconfig/.cfg/ --work-tree=$HOME/.juanito_rconfig submodule add'
 alias gitrdotsmu='/usr/bin/git --git-dir=$HOME/.juanito_rconfig/.cfg/ --work-tree=$HOME/.juanito_rconfig submodule update --remote --merge'
 alias sshdot='/usr/bin/git --git-dir=$HOME/.sshcfg/ --work-tree=$HOME/.ssh'
-# poner if para validar si es bash o zsh
-# if [[ -n ${ZSH_VERSION-} ]]; then
-# else
+# shellcheck disable=SC2009
+if [[ $(ps -p $$ | grep sh | awk '{print $(NF)}') = "$shell" ]]; then
     if [ -f "/usr/share/bash-completion/completions/git" ]; then
-       . /usr/share/bash-completion/completions/git                                                                                                                                                                                                       fi
+        __git_complete sshdot __git_main
+        __git_complete gitdot __git_main
+        __git_complete gitdotsm _git_submodule
+        __git_complete gitdotsma _git_submodule
+        __git_complete gitdotsmu _git_submodule
+        __git_complete gitrdot __git_main
+        __git_complete gitrdotsm _git_submodule
+        __git_complete gitrdotsma _git_submodule
+        __git_complete gitrdotsmu _git_submodule
     fi
-    __git_complete sshdot __git_main
-    __git_complete gitdot __git_main
-    __git_complete gitdotsm _git_submodule
-    __git_complete gitdotsma _git_submodule
-    __git_complete gitdotsmu _git_submodule
-    __git_complete gitrdot __git_main
-    __git_complete gitrdotsm _git_submodule
-    __git_complete gitrdotsma _git_submodule
-    __git_complete gitrdotsmu _git_submodule
-# fi
+fi
 
 # Tmux Alias
 alias tls='tmux ls'
@@ -68,6 +66,7 @@ alias tkw='tmux kill-window -t'
 
 # Reload rc files local/remote
 alias rrc='source ~/.bashrc'
+alias zrc='source ~/.zshrc'
 alias trc='tmux source-file ~/.tmux.conf'
 alias rrrc='source ~/.juanito_rconfig/.bashrc'
 alias rtrc='tmux source-file ~/.juanito_rconfig/.tmux.conf'

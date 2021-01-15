@@ -60,7 +60,15 @@ fi
 
 # Enabling fzf for completion
 # shellcheck disable=SC1090
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+if [[ ! "$PATH" == *$HOME/.fzf/bin* ]]; then
+  export PATH="${PATH:+${PATH}:}$HOME/.fzf/bin"
+fi
+# Auto-completion
+# shellcheck disable=SC1090
+[[ $- == *i* ]] && source "$HOME/.fzf/shell/completion.bash" 2> /dev/null
+# Key bindings
+# shellcheck disable=SC1090
+source "$HOME/.fzf/shell/key-bindings.bash"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--height 96% --reverse --preview "cat {}"'

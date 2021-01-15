@@ -97,7 +97,7 @@ function __promptline_cwd {
 }
 function __promptline_left_prompt {
   local slice_prefix slice_empty_prefix slice_joiner slice_suffix is_prompt_empty=1
-
+  prompt_newline=$'\n%{\r%}'
   # section "a" header
   slice_prefix="${a_bg}${sep}${a_fg}${a_bg}${space}" slice_suffix="$space${a_sep_fg}" slice_joiner="${a_fg}${a_bg}${alt_sep}${space}" slice_empty_prefix="${a_fg}${a_bg}${space}"
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
@@ -117,7 +117,7 @@ function __promptline_left_prompt {
   __promptline_wrapper "$(__promptline_cwd)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # close sections
-  printf "%s" "${reset_bg}${sep}$reset$space"
+  printf "%s" "${reset_bg}${sep}$reset$space$prompt_newline${sep}$reset$space"
 }
 function __promptline_wrapper {
   # wrap the text in $1 with $2 and $3, only if $1 is not empty
