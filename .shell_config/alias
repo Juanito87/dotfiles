@@ -3,7 +3,11 @@
 ##==============================================================================
 
 # Enabling Alias expansion, to use them in vim
-shopt -s expand_aliases
+# Poner if para validar la terminal, zsh no lo toma
+# if [[ -n ${ZSH_VERSION-} ]]; then
+# else
+    shopt -s expand_aliases;
+# fi
 
 # Improving readability options with:
 # - Color coding
@@ -40,18 +44,22 @@ alias gitrdotsm='/usr/bin/git --git-dir=$HOME/.juanito_rconfig/.cfg/ --work-tree
 alias gitrdotsma='/usr/bin/git --git-dir=$HOME/.juanito_rconfig/.cfg/ --work-tree=$HOME/.juanito_rconfig submodule add'
 alias gitrdotsmu='/usr/bin/git --git-dir=$HOME/.juanito_rconfig/.cfg/ --work-tree=$HOME/.juanito_rconfig submodule update --remote --merge'
 alias sshdot='/usr/bin/git --git-dir=$HOME/.sshcfg/ --work-tree=$HOME/.ssh'
-if [ -f "/usr/share/bash-completion/completions/git" ]; then
-   . /usr/share/bash-completion/completions/git                                                                                                                                                                                                       fi
-fi
-__git_complete sshdot __git_main
-__git_complete gitdot __git_main
-__git_complete gitdotsm _git_submodule
-__git_complete gitdotsma _git_submodule
-__git_complete gitdotsmu _git_submodule
-__git_complete gitrdot __git_main
-__git_complete gitrdotsm _git_submodule
-__git_complete gitrdotsma _git_submodule
-__git_complete gitrdotsmu _git_submodule
+# poner if para validar si es bash o zsh
+# if [[ -n ${ZSH_VERSION-} ]]; then
+# else
+    if [ -f "/usr/share/bash-completion/completions/git" ]; then
+       . /usr/share/bash-completion/completions/git                                                                                                                                                                                                       fi
+    fi
+    __git_complete sshdot __git_main
+    __git_complete gitdot __git_main
+    __git_complete gitdotsm _git_submodule
+    __git_complete gitdotsma _git_submodule
+    __git_complete gitdotsmu _git_submodule
+    __git_complete gitrdot __git_main
+    __git_complete gitrdotsm _git_submodule
+    __git_complete gitrdotsma _git_submodule
+    __git_complete gitrdotsmu _git_submodule
+# fi
 
 # Tmux Alias
 alias tls='tmux ls'

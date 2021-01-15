@@ -36,7 +36,8 @@
 ##  DEV NOTES:
 ##
 ##  shopt -s extglob
-##      This must be enabled for extglob wildcards to work (eg !).
+##      This must be enabled for extglob wildcards to work (eg !). for bash
+##      https://www.zsh.org/mla/users/2006/msg00728.html for zsh
 ##
 ##  files=$(/usr/bin/ls -U * 2> /dev/null | wc -l)
 ##      Create a list of all files in '*' and count it with wc -l
@@ -67,8 +68,8 @@
 
 function better_ls()
 {
-    shopt -s extglob
-    local LS="$(which ls)"
+    # shopt -s extglob
+    local LS="/usr/bin/ls"
     local TS="+%d-%m-%Y%t%R"
 
     ## IF NO ARGUMENTS PASSED -> run better ls version on current folder

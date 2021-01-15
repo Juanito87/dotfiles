@@ -3,7 +3,7 @@
 function memo()
 {
 # Telling closing condition
-printf "Presione ESC para finalizar"
+printf "Presione ESC para finalizar\n"
 # Check that there is only one parameter
     if [ $# -eq 1 ]
     then
