@@ -46,17 +46,8 @@ git submodule init
 git submodule update
 cd ..
 ## Setting helptags for vim plugins
-vim -u NONE -c "helptags $install_folder/.vim/pack/dist/start/pormpt-airline/doc" -c q
-vim -u NONE -c "helptags $install_folder/.vim/pack/dist/start/vim-airline/doc" -c q
-vim -u NONE -c "helptags $install_folder/.vim/pack/themes/opt/dracula/doc" -c q
-vim -u NONE -c "helptags $install_folder/.vim/pack/fzf/start/doc" -c q
-vim -u NONE -c "helptags $install_folder/.vim/pack/themes/start/gruvbox/doc" -c q
-vim -u NONE -c "helptags $install_folder/.vim/pack/tmuxline/doc" -c q
-vim -u NONE -c "helptags $install_folder/.vim/pack/vim-tmux/doc" -c q
-vim -u NONE -c "helptags $install_folder/.vim/pack/tpope/start/fugitive/doc" -c q
-vim -u NONE -c "helptags $install_folder/.vim/pack/tpope/start/commentary/doc" -c q
-vim -u NONE -c "helptags $install_folder/.vim/pack/tpope/start/surround/doc" -c q
-vim -u NONE -c "helptags $install_folder/.vim/pack/vim-syntastic/start/doc" -c q
+vim -c "helptags ALL" -c q
+
 
 # Cleaning up
 if [ $synergy == "false" ]; then
