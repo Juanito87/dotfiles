@@ -190,7 +190,7 @@ function __promptline {
       __promptline_ps1
     fi
   else
-    PS1="$(__promptline_ps1)\n"
+    PS1="$(__promptline_ps1)\n${sep}"
   fi
 }
 

@@ -1,0 +1,6 @@
+#bak: toma un archivo como parámetro y genera un respaldo con timestamp y extensión .bak
+#ex: descomprime archivos con extenciones tar.gz, bz2, rar, gz, tar, tbvz2, tgz, zip, Z, 7z, deb, tar.xz, tar.zst
+#history: pasa parámetros de configuración para history como color, formato, tamaño y control
+#ls: mejora ls, agregando archivos ocultos y ordenando carpetas luego archivos
+#memo: muestra menus de ayuda para refrescar alias y comandos personalizados
+#sudo: habilita el autocompletado

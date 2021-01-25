@@ -122,6 +122,7 @@ endif
 " Automatically deletes all trailing white space and newlines at end of file on save
 au BufWritePre * %s/\s\+$//e
 au BufWritepre * %s/\n\+\%$//e
+au BufWritepre * %s/\^\[\+\%$//e
 
 " Netrw config
 "" Toggle function to work more like nerdtree

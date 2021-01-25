@@ -10,7 +10,7 @@ printf "Presione ESC para finalizar\n"
         case $1 in
            # Compara el valor y asigna el comando a mostrar para el help, agregar un case a futuro
            "alias") grep "alias " "$HOME"/.shell_config/alias | fzf ;;
-           "commands") < "$HOME"/.shell_config/resumen fzf ;;
+           "commands") < "$HOME"/.shell_config/commands/resumen fzf ;;
            *) printf "Las opciones disponibles actualmente son \nalias\ncommands\n" ;;
         esac
     else
