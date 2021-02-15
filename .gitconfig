@@ -1,6 +1,10 @@
 [user]
     email = juancruz.f87@gmail.com
     name = juanito87
+[includeIf "gitdir:~/Repo/RH/"]
+    path = ~/Repo/RH/.gitconfig
+[includeIf "gitdir:~/Repo/EDU/"]
+    path = ~/Repo/EDU/.gitconfig
 [core]
     excludesfile = ~/.gitignore-global
 [difftool]
