@@ -1,15 +1,15 @@
 [submodule ".shell_config"]
-	path = .shell_config
-	url = git@github.com:Juanito87/.shell_config.git
+    path = .shell_config
+    url = http://github.com/Juanito87/.shell_config.git
 [submodule ".tmux"]
-	path = .tmux
-	url = git@github.com:Juanito87/.tmux.git
+    path = .tmux
+    url = http://github.com/Juanito87/.tmux.git
 [submodule ".fzf"]
-	path = .fzf
-	url = https://github.com/junegunn/fzf.git
+    path = .fzf
+    url = https://github.com/junegunn/fzf.git
 [submodule ".vim"]
-	path = .vim
-	url = git@github.com:Juanito87/.vim.git
+    path = .vim
+    url = http://github.com/Juanito87/.vim.git
 [submodule ".ssh"]
-	path = .ssh
-	url = git@github.com:Juanito87/.ssh.git
+    path = .ssh
+    url = http://github.com/Juanito87/.ssh.git
