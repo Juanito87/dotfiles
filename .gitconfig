@@ -1,10 +1,23 @@
 [user]
     email = juancruz.f87@gmail.com
     name = juanito87
+[url "git@github.com:"]
+      pushInsteadOf = http://github.com/
+      pushInsteadOf = git@github.com:
+; [includeIf "gitdir:~/Repo/CASA/"]
+;     path = ~/.gitconfig-juanito
+; [includeIf "gitdir:~/.shell_config/"]
+;     path = ~/.gitconfig-juanito
+; [includeIf "gitdir:~/.vim/"]
+;     path = ~/.gitconfig-juanito
+; [includeIf "gitdir:~/.tmux/"]
+;     path = ~/.gitconfig-juanito
+; [includeIf "gitdir:~/.ssh/"]
+;     path = ~/.gitconfig-juanito
 [includeIf "gitdir:~/Repo/RH/"]
-    path = ~/Repo/RH/.gitconfig
+    path = ~/.gitconfig-rh
 [includeIf "gitdir:~/Repo/EDU/"]
-    path = ~/Repo/EDU/.gitconfig
+    path = ~/.gitconfig-edu
 [core]
     excludesfile = ~/.gitignore-global
 [difftool]

@@ -1,2 +1,2 @@
 # # The following lines were added by compinstall
-source ~/.shel_config/zsh/zshrc
+source ~/.shell_config/zsh/zshrc
