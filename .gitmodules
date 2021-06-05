@@ -10,6 +10,3 @@
 [submodule ".vim"]
     path = .vim
     url = http://github.com/Juanito87/.vim.git
-[submodule ".ssh"]
-    path = .ssh
-    url = http://github.com/Juanito87/.ssh.git
