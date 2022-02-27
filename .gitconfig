@@ -14,8 +14,6 @@
 ;     path = ~/.gitconfig-juanito
 ; [includeIf "gitdir:~/.ssh/"]
 ;     path = ~/.gitconfig-juanito
-[includeIf "gitdir:~/Repo/RH/"]
-    path = ~/.gitconfig-rh
 [includeIf "gitdir:~/Repo/EDU/"]
     path = ~/.gitconfig-edu
 [core]
