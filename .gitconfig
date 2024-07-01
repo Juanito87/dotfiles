@@ -34,3 +34,7 @@
 	rebase = false
 [commit]
 	gpgsign = true
+[init]
+	defaultBranch = main
+[submodule]
+	recurse = true
