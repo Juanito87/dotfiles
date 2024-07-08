@@ -12,4 +12,4 @@
     url = http://github.com/Juanito87/.ssh.git
 [submodule ".config/nvim"]
 	path = .config/nvim
-	url = git@github.com:Juanito87/nvim.git
+	url = git@github.com:Juanito87/kickstart.nvim.git
