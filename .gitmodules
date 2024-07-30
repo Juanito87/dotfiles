@@ -7,9 +7,6 @@
 [submodule ".fzf"]
     path = .fzf
     url = https://github.com/junegunn/fzf.git
-[submodule ".ssh"]
-    path = .ssh
-    url = http://github.com/Juanito87/.ssh.git
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = git@github.com:Juanito87/kickstart.nvim.git
