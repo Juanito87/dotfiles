@@ -1,0 +1,19 @@
+[colors.vi_mode_cursor]
+cursor = "CellForeground"
+text = "CellBackground"
+
+[font]
+size = 12.0
+
+[font.normal]
+family = "agave Nerd Font Mono"
+style = "Regular"
+
+[scrolling]
+history = 10000
+
+[window]
+dynamic_title = true
+opacity = 0.75
+startup_mode = "Windowed"
+title = "Juanito's Alacritty"
